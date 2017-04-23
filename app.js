@@ -4,7 +4,11 @@ $(document).ready(function() {
 })
 
 function count() {
-	var newVal = $('#mainText').val().split(' ').length
-	$('#count').text(newVal)
-	console.log(newVal)
+	if ($('#mainText').val() == '') {
+		$('#count').text(0)
+	} else {
+		var newVal = $('#mainText').val().split(' ').length
+		$('#count').text(newVal)
+		console.log(newVal)
+	}
 }
