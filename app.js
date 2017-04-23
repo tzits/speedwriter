@@ -4,5 +4,7 @@ $(document).ready(function() {
 })
 
 function count() {
-	console.log($('#mainText').val().split(' ').length)
+	var newVal = $('#mainText').val().split(' ').length
+	$('#count').text(newVal)
+	console.log(newVal)
 }
