@@ -7,16 +7,29 @@
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+	<script src="./app.js"></script>
 </head>
 <body>
 	<nav class='navbar navbar-default'>
-		<div class='collapse navbar-collapse'>
-			<ul class='nav navbar-nav'>
-				<li><a href='#'>Profile</a></li>
-				<li><a href='#'>Login</a></li>
-				<li><a href='#'>Signup</a></li>
-			</ul>
+		<div class='container-fluid'>
+			<div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
+			<div class='collapse navbar-collapse'>
+				<ul class='nav navbar-nav'>
+					<li><a href='#'>About</a></li>
+					<li><a href='#'>Login</a></li>
+					<a class='btn btn-info' id='signup'>Signup</a>
+				</ul>
+			</div>
 		</div>
 	</nav>
+	<button onclick="count()">Word Count</button><br><br>
+	<textarea id="mainText" cols="90%" rows="50"></textarea>
 </body>
 </html>
