@@ -20,18 +20,15 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		    </div>
-			<div class='collapse navbar-collapse'>
-				<ul class='nav navbar-nav'>
-					<li><a href='#'>About</a></li>
-					<li><a href='#'>Login</a></li>
-					<a class='btn btn-info' id='signup'>Signup</a>
-				</ul>
-			</div>
+
 		</div>
 	</nav>
 	<button onclick="count()">Word Count</button>
 	<span>Word Count: <span id='count'>0</span></span>
-
+	<form>
+		Words Per Hour:
+		<input id='num' type="number" name="quantity" min="1" max="2000" placeholder='1500'>
+	</form>
 	<br><br>
 	<input id='title' class='center-block' placeholder="title"><br>
 
