@@ -15,6 +15,9 @@
 #num {
 	width: 60px;
 }
+#num-span {
+	margin-right: 5%;
+}
 body {
 	background-color: lightgrey!important;
 }
