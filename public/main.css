@@ -12,7 +12,9 @@
 	height: 40px;
 	font-size: 30px;
 }
-
+#num {
+	width: 60px;
+}
 body {
 	background-color: lightgrey!important;
 }
