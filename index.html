@@ -24,15 +24,23 @@
 				<ul class='nav navbar-nav'>
 					<li><a href='#'>About</a></li>
 					<li><a href='#'>Login</a></li>
-					<a class='btn btn-info' id='signup'>Signup</a>
-				</ul>
+					<a class='btn btn-info' id='signup'>Signup</a>				
+				</ul>		
 			</div>
 		</div>
 	</nav>
 	<button onclick="count()">Word Count</button>
 	<span>Word Count: <span id='count'>0</span></span>
-
+	<span class='pull-right' id='num-span'>
+		<form>
+			Words Per Hour:
+			<input id='num' type="number" name="quantity" min="1" max="2000" placeholder='1500'>
+		</form>
+	</span>
 	<br><br>
+	<input id='title' class='center-block' placeholder="title"><br>
+
+
 	<textarea id="mainText" cols="90%" rows="50"></textarea>
 </body>
 </html>
