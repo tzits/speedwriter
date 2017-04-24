@@ -7,6 +7,12 @@
 	font-family: "Times New Roman", Georgia, Serif;
 	font-size: 16px;
 }
+#title {
+	width: 300px;
+	height: 40px;
+	font-size: 30px;
+}
+
 body {
 	background-color: lightgrey!important;
 }
