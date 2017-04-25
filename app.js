@@ -64,7 +64,7 @@ function convert(time) {
 	var seconds = parseInt(separate[2])
 	var words = wordCount()
 	var total = hours + (minutes/60) + (seconds/3600)
-	if (words/total > 1000) {
+	if (words/total > $('#num').val()) {
 		$('#mainText').attr('style', 'color:black')
 		console.log('on pace')
 	} else {		
