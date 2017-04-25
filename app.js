@@ -25,7 +25,7 @@ function add() {
 function timer() {
     t = setTimeout(add, 1000);
 }
-timer();
+
 
 
 /* Start button */
@@ -48,18 +48,39 @@ setInterval
 function count() {
 	setInterval(function() {
 		console.log('counting')
-		if ($('#mainText').val() == '') {
-			$('#count').text(0)
-		} else {
-			var newVal = $('#mainText').val().split(' ').length
-			$('#count').text(newVal)
-			console.log(newVal)
-		}
-
-	}, 2000)
+		wordCount()
+		convert($('#time').text())
+	}, 1000)
 }
 
 function startCount() {
 	console.log('so far so good')
 }
 
+function convert(time) {
+	var separate = time.split(':')
+	var hours = parseInt(separate[0])
+	var minutes = parseInt(separate[1])
+	var seconds = parseInt(separate[2])
+	var words = wordCount()
+	var total = hours + (minutes/60) + (seconds/3600)
+	if (words/total > 1000) {
+		$('#mainText').attr('style', 'color:black')
+		console.log('on pace')
+	} else {		
+		$('#mainText').attr('style', 'color:red')
+		console.log('too slow')
+	}
+
+}
+
+function wordCount() {
+			if ($('#mainText').val() == '') {
+			$('#count').text(0)
+			return 0
+		} else {
+			var newVal = $('#mainText').val().split(' ').length
+			$('#count').text(newVal)
+			return newVal
+		}
+}
