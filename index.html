@@ -4,7 +4,6 @@
 	<title>SpeedWriter</title>
 	<link rel="stylesheet" type="text/css" href="./public/main.css">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script src="./app.js"></script>
@@ -34,9 +33,16 @@
 	<span class='pull-right' id='num-span'>
 		<form>
 			Words Per Hour:
-			<input id='num' type="number" name="quantity" min="1" max="2000" placeholder='1500'>
+			<input id='num' type="number" name="quantity" min="1" max="2000" placeholder='1000' value='1000'>
 		</form>
-	</span>
+	</span><br>
+	<div class='pull-right' id='timer-container'>
+		<h1 id='time'>00:00:00</h1>
+		<button id="start">start</button>
+		<button id="stop">stop</button>
+		<button id="clear">clear</button>
+	</div>
+
 	<br><br>
 	<input id='title' class='center-block' placeholder="title"><br>
 

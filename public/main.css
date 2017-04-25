@@ -1,23 +1,38 @@
 #signup {
 	margin-top: 9px;
 }
+
 #mainText {
 	width: 84%;
 	margin-left: 7%;
 	font-family: "Times New Roman", Georgia, Serif;
 	font-size: 16px;
 }
+
 #title {
 	width: 300px;
 	height: 40px;
 	font-size: 30px;
 }
+
 #num {
 	width: 60px;
 }
+
 #num-span {
 	margin-right: 5%;
 }
+
 body {
 	background-color: lightgrey!important;
+}
+
+#timer-container {
+	position: absolute;
+	right: 5%;
+}
+
+#time {
+	margin-top: 0;
+	margin-right: 10px;
 }
