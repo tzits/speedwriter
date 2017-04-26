@@ -24,6 +24,7 @@ function add() {
 }
 function timer() {
     t = setTimeout(add, 1000);
+    count()
 }
 
 
@@ -75,12 +76,21 @@ function convert(time) {
 }
 
 function wordCount() {
-			if ($('#mainText').val() == '') {
-			$('#count').text(0)
-			return 0
-		} else {
-			var newVal = $('#mainText').val().split(' ').length
-			$('#count').text(newVal)
-			return newVal
-		}
+	if ($('#mainText').val() == '') {
+		$('#count').text(0)
+		return 0
+	} else {
+		var newVal = $('#mainText').val().split(' ').length
+		$('#count').text(newVal)
+		return newVal
+	}
+}
+
+function hide() {
+	$('#timer-container').attr('style','display:none')
+	$('#show').attr('style','display:inline')
+}
+function show() {
+	$('#timer-container').attr('style','display:inline')
+	$('#show').attr('style','display:none')
 }
