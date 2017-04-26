@@ -28,8 +28,7 @@
 			</div>
 		</div>
 	</nav>
-	<button onclick="count()">Word Count</button>
-	<span>Word Count: <span id='count'>0</span></span>
+	<span id='word-count'>Word Count: <span id='count'>0</span></span>
 	<span class='pull-right' id='num-span'>
 		<form>
 			Words Per Hour:
@@ -41,7 +40,9 @@
 		<button id="start">start</button>
 		<button id="stop">stop</button>
 		<button id="clear">clear</button>
+		<button id='hide' onclick="hide()">hide</button>
 	</div>
+	<button class='pull-right' id='show' onclick="show()">show timer</button>
 
 	<br><br>
 	<input id='title' class='center-block' placeholder="title"><br>
