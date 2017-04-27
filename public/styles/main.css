@@ -30,6 +30,7 @@ body {
 #timer-container {
 	position: absolute;
 	right: 5%;
+	margin-top: 5px;
 }
 
 #time {
@@ -43,4 +44,7 @@ body {
 
 #show {
 	display:none;
+}
+#signup {
+	margin-top: 12px;
 }
