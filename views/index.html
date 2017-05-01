@@ -7,9 +7,9 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script src="../public/scripts/app.js"></script>
-	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<!-- 	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script> -->
 </head>
 <body>
 	<nav class='navbar navbar-default'>
@@ -48,8 +48,8 @@
 	<button class='pull-right' id='show' onclick="show()">show timer</button>
 
 	<br><br>
-	<span id='font-change'>Font Size
-		<select name='font-size'>
+	<span id='font-change'>Font Size 
+		<select name='font-size' onchange="changeSize()">
 			<option value='12'>12</option>
 			<option value='18'>18</option>
 			<option value='24'>24</option>
@@ -57,6 +57,7 @@
 			
 		</select>
 	</span>
+	<span id='autoIndent'>Auto-Indent <input checked='true' type='checkbox' name='indent' value='true'></span>
 	<input id='title' class='center-block' placeholder="title"><br>
 
 
