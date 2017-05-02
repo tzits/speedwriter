@@ -6,12 +6,12 @@ config.$inject = ['$routeProvider', '$locationProvider']
 function config ( $routeProvider, $locationProvider) {
 	$routeProvider
 	.when('/', {
-		templateUrl: '/templates/index.html',
+		templateUrl: 'views/templates/index.html',
 		controllerAs: 'indCtrl',
 		controller: 'IndexController'
 	})
 	.when('/about', {
-		templateUrl: '/templates/about',
+		templateUrl: 'views/templates/about.html',
 		controllerAs: 'aboutCtrl',
 		controller: 'AboutController'
 	})

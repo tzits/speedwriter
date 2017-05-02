@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname));
 app.use('/vendor', express.static(__dirname + '/bower_components'));
 var controllers = require('./controllers');
 
