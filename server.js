@@ -7,14 +7,27 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-// // Passport attempt
-// var passport = require('passport')
-
+// Passport attempt
+var passport = require('passport')
+var session = require('express-session')
+var RedisStore = require('connect-redis')(session)
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(express.static(__dirname));
 app.use('/vendor', express.static(__dirname + '/bower_components'));
+app.use(session({
+	store: new RedisStore({
+		url: config.redisStore.url
+	}),
+	secret: config.redisStore.secret,
+	resave: false,
+	saveUninitialized: false
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 var controllers = require('./controllers');
 
 /**********
