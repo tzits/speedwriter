@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	var indenting = true
 	console.log("type away");
 
 	var text = document.getElementById('mainText')
@@ -62,6 +61,12 @@ $(document).ready(function() {
 
 })
 
+var indenting = true
+
+function changeIndent() {
+
+}
+
 function changeSize() {
   		var size = parseInt($('select').val()) + 4
   		$('#mainText').attr('style','font-size:' + size + 'px')
@@ -95,6 +100,8 @@ function convert(time) {
 	}
 
 }
+
+
 
 function wordCount() {
 	if ($('#mainText').val() == '') {
