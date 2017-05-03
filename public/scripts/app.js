@@ -33,16 +33,19 @@ function config ( $routeProvider, $locationProvider) {
 $(document).ready(function() {
 	console.log("type away");
 
-	// var text = document.getElementById('mainText')
-	// text.addEventListener('keydown', function(e){
-	// 	if (e.keyCode == 9) {
-	// 		e.preventDefault()
-	// 		console.log('indenting')
-	// 		$('#mainText').append(document.createTextNode('    '));
-	// 	} else if (e.keyCode == 13) {
-	// 		e.preventDefault()
-	// 	}
-	// })
+	var text = document.getElementById('mainText')
+	text.addEventListener('keydown', function(e){
+		if (e.keyCode == 9) {
+			e.preventDefault()
+			console.log('indenting')
+			$('#mainText').append(document.createTextNode('    '));
+		} else if (e.keyCode == 13) {
+			e.preventDefault()
+			console.log('?')
+			document.getElementById("mainText").value = document.getElementById("mainText").value + "\n        ";
+        	return false;
+    	}
+	})
 
 
 
@@ -82,12 +85,20 @@ $(document).ready(function() {
 	//     seconds = 0; minutes = 0; hours = 0;
 	// }
 
-	// $('select').on('change', function() {
- //  		console.log(this.value);
- //  		var size = parseInt(this.value) + 4
- //  		$('#mainText').attr('style','font-size:' + size + 'px')
-	// })
+
 })
+
+var indenting = true
+
+function changeIndent() {
+
+}
+
+function changeSize() {
+  		var size = parseInt($('select').val()) + 4
+  		$('#mainText').attr('style','font-size:' + size + 'px')
+  		return size
+	}
 
 
 function count() {
@@ -110,23 +121,29 @@ function convert(time) {
 	var words = wordCount()
 	var total = hours + (minutes/60) + (seconds/3600)
 	if (words/total > $('#num').val()) {
-		$('#mainText').attr('style', 'color:black')
-		console.log('on pace')
+		$('#mainText').attr('style', 'color:black;font-size:' + changeSize() + 'px')
 	} else {		
-		$('#mainText').attr('style', 'color:red')
-		console.log('too slow')
+		$('#mainText').attr('style', 'color:red;font-size:' + changeSize() + 'px')
 	}
 
 }
+
+
 
 function wordCount() {
 	if ($('#mainText').val() == '') {
 		$('#count').text(0)
 		return 0
 	} else {
-		var newVal = $('#mainText').val().split(' ').length
-		$('#count').text(newVal)
-		return newVal
+		var newVal = $('#mainText').val().split(' ')
+		var noSpace = []
+		for (var i = 0; i < newVal.length; i++) {
+			if (newVal[i] != '' && newVal[i] != "\n") {
+				noSpace.push(newVal[i])
+			}
+		}
+		$('#count').text(noSpace.length)
+		return noSpace.length
 	}
 }
 
