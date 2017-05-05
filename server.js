@@ -41,25 +41,25 @@ app.get('/', function homepage(req, res) {
  * JSON API ENDPOINTS
  */
  // Get One Doc
-app.get('/api/users/:user_id/docs/:id', controllers.docs.show)
+// app.get('/api/users/:user_id/docs/:id', controllers.docs.show)
 
-// Get All Users Doc
-app.get('/api/users/:id/docs', controllers.docs.index)
+// // Get All Users Doc
+// app.get('/api/users/:id/docs', controllers.docs.index)
 
-// Get One User
-app.get('/api/users/:id', controllers.docs.getuser)
+// // Get One User
+// app.get('/api/users/:id', controllers.users.getuser)
 
-// Create User
-app.post('/api/users', controllers.users.createUser)
+// // Create User
+// app.post('/api/users', controllers.users.createUser)
 
-// Create Document
-app.post('/api/users/:id/docs', controllers.docs.createDoc)
+// // Create Document
+// app.post('/api/users/:id/docs', controllers.docs.createDoc)
 
-// Update User
-app.patch('/api/users/:id', controllers.users.updateUser)
+// // Update User
+// app.patch('/api/users/:id', controllers.users.updateUser)
 
-// Update Document
-app.patch('/api/users/:user_id/docs/:id', controllers.docs.updateDoc)
+// // Update Document
+// app.patch('/api/users/:user_id/docs/:id', controllers.docs.updateDoc)
 
 //server
 app.listen(process.env.PORT || 8000, function() {
