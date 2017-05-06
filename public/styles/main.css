@@ -52,3 +52,7 @@ body {
 #font-change {
 	margin-left: 4%;
 }
+#saveDoc {
+	display:block;
+	margin-left:4%;
+}

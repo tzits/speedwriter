@@ -162,3 +162,7 @@ function show() {
 function indent() {
 	console.log('indent')
 }
+
+function saveDoc() {
+	console.log('lets save')
+}
