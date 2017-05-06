@@ -159,10 +159,6 @@ function show() {
 	$('#show').attr('style','display:none')
 }
 
-function indent() {
-	console.log('indent')
-}
-
 function saveDoc() {
 	console.log('lets save')
 }
