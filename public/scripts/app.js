@@ -1,31 +1,3 @@
-// var app = angular
-// 	.module('speedwriter', ['ngRoute'])
-// 	.config(config)
-
-// config.$inject = ['$routeProvider', '$locationProvider']
-// function config ( $routeProvider, $locationProvider) {
-// 	$routeProvider
-// 	.when('/', {
-// 		templateUrl: 'views/templates/index.html',
-// 		controllerAs: 'indCtrl',
-// 		controller: 'IndexController'
-// 	})
-// 	.when('/about', {
-// 		templateUrl: 'views/templates/about.html',
-// 		controllerAs: 'aboutCtrl',
-// 		controller: 'AboutController'
-// 	})
-
-// 	$locationProvider.html5Mode({
-// 		enabled: true,
-// 		requireBase: false
-// 	})
-// }
-
-
-
-
-
 $(document).ready(function() {
 	console.log("type away");
 
@@ -44,7 +16,6 @@ $(document).ready(function() {
 			$('#mainText').append(document.createTextNode('    '));
 		} else if (e.keyCode == 13) {
 			e.preventDefault()
-			console.log('?')
 			document.getElementById("mainText").value = document.getElementById("mainText").value + "\n        ";
         	return false;
     	}
@@ -159,6 +130,31 @@ function show() {
 	$('#show').attr('style','display:none')
 }
 
+var newDoc = {
+	title: "",
+	start_count: 0,
+	content: "",
+	user_id: 1
+}
+
 function saveDoc() {
+	newDoc.title = $('#title').val()
+	newDoc.content = $('#mainText').val()
+	newDoc.start_count = parseInt($('#count').text())
 	console.log('lets save')
+	$.ajax({
+		method: 'POST',
+		url: 'api/docs',
+		data: 'newDoc',
+		success: newDocSuccess,
+		error: newDocError
+	})
+}
+
+function newDocSuccess() {
+	console.log('woohoo')
+}
+
+function newDocError() {
+	console.log('thats too bad')
 }

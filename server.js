@@ -41,7 +41,7 @@ app.get('/', function homepage(req, res) {
  * JSON API ENDPOINTS
  */
  // Get One Doc
-app.get('/api/users/:user_id/docs/:id', controllers.docs.show)
+app.get('/api/docs/:id', controllers.docs.show)
 
 // Get All User's Doc
 app.get('/api/users/:id/docs', controllers.docs.index)
@@ -59,7 +59,7 @@ app.post('/api/users/:id/docs', controllers.docs.createDoc)
 app.patch('/api/users/:id', controllers.users.updateUser)
 
 // Update Document
-app.patch('/api/users/:user_id/docs/:id', controllers.docs.updateDoc)
+app.patch('/api/docs/:id', controllers.docs.updateDoc)
 
 //server
 app.listen(process.env.PORT || 8000, function() {
