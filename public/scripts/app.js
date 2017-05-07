@@ -185,8 +185,8 @@ function createUser() {
 		method: 'POST',
 		url: 'api/users',
 		data: newUser,
-		success: newDocSuccess,
-		error: newDocError
+		success: newUserSuccess,
+		error: newUserError
 	})
 }
 
@@ -195,6 +195,14 @@ function newDocSuccess() {
 }
 
 function newDocError() {
+	console.log('thats too bad')
+}
+
+function newUserSuccess() {
+	console.log('woohoo')
+}
+
+function newUserError() {
 	console.log('thats too bad')
 }
 
