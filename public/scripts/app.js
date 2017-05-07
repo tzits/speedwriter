@@ -151,10 +151,29 @@ function saveDoc() {
 	})
 }
 
+function getDoc() {
+	var docId = '1'
+	$.ajax({
+		method: 'GET',
+		url: 'api/docs/' + docId,
+		success: getDocSuccess,
+		error: getDocError
+
+	})
+}
+
 function newDocSuccess() {
 	console.log('woohoo')
 }
 
 function newDocError() {
+	console.log('thats too bad')
+}
+
+function getDocSuccess() {
+	console.log('woohoo')
+}
+
+function getDocError() {
 	console.log('thats too bad')
 }
