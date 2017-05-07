@@ -53,7 +53,7 @@ app.get('/api/users/:id', controllers.users.getUser)
 app.post('/api/users', controllers.users.createUser)
 
 // Create Document
-app.post('/api/users/:id/docs', controllers.docs.createDoc)
+app.post('/api/docs', controllers.docs.createDoc)
 
 // Update User
 app.patch('/api/users/:id', controllers.users.updateUser)

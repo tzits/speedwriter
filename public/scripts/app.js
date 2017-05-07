@@ -162,6 +162,18 @@ function getDoc() {
 	})
 }
 
+function updateDoc() {
+	var docId = '1'
+	$.ajax({
+		method: 'PATCH',
+		url: 'api/docs/' + docId,
+		success: updateDocSuccess,
+		error: updateDocError
+
+	})
+}
+
+
 function newDocSuccess() {
 	console.log('woohoo')
 }
@@ -175,5 +187,13 @@ function getDocSuccess() {
 }
 
 function getDocError() {
+	console.log('thats too bad')
+}
+
+function updateDocSuccess() {
+	console.log('woohoo')
+}
+
+function updateDocError() {
 	console.log('thats too bad')
 }
