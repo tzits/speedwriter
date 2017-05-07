@@ -102,8 +102,6 @@ function convert(time) {
 
 }
 
-
-
 function wordCount() {
 	if ($('#mainText').val() == '') {
 		$('#count').text(0)
@@ -135,6 +133,12 @@ var newDoc = {
 	start_count: 0,
 	content: "",
 	user_id: 1
+}
+
+var newUser = {
+	name: "",
+	username: "",
+	password: ""
 }
 
 function saveDoc() {
@@ -173,6 +177,18 @@ function updateDoc() {
 	})
 }
 
+function createUser() {
+	newUser.name = $('#name').val()
+	newUser.username = $('#email').val()
+	newUser.password = $('#password').val()
+	$.ajax({
+		method: 'POST',
+		url: 'api/users',
+		data: newUser,
+		success: newDocSuccess,
+		error: newDocError
+	})
+}
 
 function newDocSuccess() {
 	console.log('woohoo')
