@@ -49,9 +49,18 @@ function updateDoc(req, res) {
 	});
 }
 
+function deleteDoc(req,res) {
+	var docId  = req.params.id;
+	db.Doc.findByIdAndRemove(docId, function(err,foundDoc){
+		if (err) {console.log(err)};
+		res.json(foundDoc + " deleted")
+	});
+}
+
 module.exports = {
 	show: show,
 	index: index,
 	createDoc: createDoc,
-	updateDoc: updateDoc
+	updateDoc: updateDoc,
+	deleteDoc: deleteDoc
 }

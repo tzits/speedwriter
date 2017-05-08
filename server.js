@@ -61,6 +61,9 @@ app.patch('/api/users/:id', controllers.users.updateUser)
 // Update Document
 app.patch('/api/docs/:id', controllers.docs.updateDoc)
 
+// Delete Doc
+app.delete('/api/docs/:id', controllers.docs.deleteDoc)
+
 //server
 app.listen(process.env.PORT || 8000, function() {
 	console.log('Speedwriter Up and Running')
