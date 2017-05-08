@@ -142,6 +142,7 @@ var newUser = {
 }
 
 function saveDoc() {
+	wordCount()
 	newDoc.title = $('#title').val()
 	newDoc.content = $('#mainText').val()
 	newDoc.start_count = parseInt($('#count').text())
@@ -149,7 +150,7 @@ function saveDoc() {
 	$.ajax({
 		method: 'POST',
 		url: 'api/docs',
-		data: 'newDoc',
+		data: newDoc,
 		success: newDocSuccess,
 		error: newDocError
 	})
