@@ -201,6 +201,25 @@ function deleteDoc(id) {
 	})
 }
 
+
+
+function word() {
+	var word = {
+		title: "",
+		content: ""
+	}
+	word.title = $('#title').val()
+	word.content = $('#mainText').val()
+	console.log(word)
+	$.ajax({
+		method: 'POST',
+		data: word,
+		url: 'api/word',
+		success: newDocSuccess,
+		error: newDocError
+	})
+}
+
 function newDocSuccess() {
 	console.log('woohoo')
 }
