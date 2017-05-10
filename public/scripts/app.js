@@ -191,6 +191,16 @@ function createUser() {
 	})
 }
 
+function deleteDoc(id) {
+	var docId = id;
+	$.ajax({
+		method: 'DESTROY',
+		url: 'api/docs/' + docId,
+		success: destroyDocSuccess,
+		error: destroyDocError
+	})
+}
+
 function newDocSuccess() {
 	console.log('woohoo')
 }
