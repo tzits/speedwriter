@@ -58,11 +58,26 @@ function deleteDoc(req,res) {
 	});
 }
 
+function word(req,res) {
+	console.log(req.body)
+	var docx = new builder.Document();
+	docx.beginHeader();
+	docx.insertText(req.body.title);
+	docx.endHeader();
+	docx.insertText(req.body.content)
+	console.log(docx)
+	docx.save('/Users/tobyzitsman/desktop/' + req.body.title + ".docx", function(err) {
+		if(err) {console.log(err)}
+		else {console.log('no error?')}
+	})
+}
+
 
 module.exports = {
 	show: show,
 	index: index,
 	createDoc: createDoc,
 	updateDoc: updateDoc,
-	deleteDoc: deleteDoc
+	deleteDoc: deleteDoc,
+	word: word
 }
