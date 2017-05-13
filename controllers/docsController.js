@@ -1,5 +1,4 @@
 var db = require('../models');
-var builder = require('docx-builder');
 
 
 function show(req, res) {
@@ -72,6 +71,7 @@ function word(req,res) {
 		else {console.log('no error?')}
 	})
 }
+
 
 module.exports = {
 	show: show,

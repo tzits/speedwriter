@@ -1,3 +1,5 @@
+var builder = require('docx-builder');
+
 $(document).ready(function() {
 	console.log("type away");
 
@@ -177,6 +179,10 @@ function updateDoc() {
 
 	})
 }
+function createDownload(dir) {
+//		$('#docspan').text("<a download=" + dir + ">Download</a>")
+	console.log(dir)
+}
 
 function createUser() {
 	newUser.name = $('#name').val()
@@ -250,4 +256,18 @@ function updateDocSuccess() {
 
 function updateDocError() {
 	console.log('thats too bad')
+}
+
+function word() {
+	var docx = new builder.Document();
+	docx.beginHeader();
+	docx.insertText($('#title').text());
+	docx.endHeader();
+	docx.insertText($('#mainText').text());
+	console.log(docx);
+	var myDownload = __dirname + req.body.title + ".docx"
+	docx.save(__dirname + req.body.title + ".docx", function(err) {
+		if(err) {console.log(err)}
+		else {console.log('it may work')}
+	})	
 }
