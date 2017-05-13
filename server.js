@@ -1,3 +1,4 @@
+
 /******************
  * MODULE IMPORTS *
  ******************/
@@ -7,18 +8,11 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
-
-// // Passport attempt
-// var passport = require('passport')
-
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(express.static(__dirname));
 app.use('/vendor', express.static(__dirname + '/bower_components'));
 var controllers = require('./controllers');
-
-
 
 var db = require('./models');
 
