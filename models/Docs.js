@@ -10,7 +10,8 @@ var DocSchema = new Schema({
 		ref: 'User'
 	},
 	start_count: Number,
-	content: String
+	content: String,
+	user_id: Number
 })
 
 var Doc = mongoose.model('Doc', DocSchema)

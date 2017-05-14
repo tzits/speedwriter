@@ -46,9 +46,17 @@ body {
 #show {
 	display:none;
 }
+
 #signup {
 	margin-top: 12px;
 }
+
 #font-change {
 	margin-left: 4%;
+}
+
+#saveDoc {
+	display:block;
+	margin-left:4%;
+	margin-top:1%;
 }

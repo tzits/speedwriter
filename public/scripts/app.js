@@ -1,93 +1,80 @@
-var app = angular
-	.module('speedwriter', ['ngRoute'])
-	.config(config)
+var builder = require('docx-builder');
 
-config.$inject = ['$routeProvider', '$locationProvider']
-function config ( $routeProvider, $locationProvider) {
-	$routeProvider
-	.when('/', {
-		templateUrl: 'views/templates/index.html',
-		controllerAs: 'indCtrl',
-		controller: 'IndexController'
-	})
-	.when('/about', {
-		templateUrl: 'views/templates/about.html',
-		controllerAs: 'aboutCtrl',
-		controller: 'AboutController'
-	})
+$(document).ready(function() {
+	console.log("type away");
 
-	$locationProvider.html5Mode({
-		enabled: true,
-		requireBase: false
-	})
-}
-
-
-	var h1 = document.getElementsByTagName('h1')[0],
-    start = document.getElementById('start'),
+	var h1 = document.getElementsByTagName('h1')[0]
+    var start = document.getElementById('start'),
     stop = document.getElementById('stop'),
     clear = document.getElementById('clear'),
     seconds = 0, minutes = 0, hours = 0,
     t;
 
-$(document).ready(function() {
-	console.log("type away");
-
-	// var text = document.getElementById('mainText')
-	// text.addEventListener('keydown', function(e){
-	// 	if (e.keyCode == 9) {
-	// 		e.preventDefault()
-	// 		console.log('indenting')
-	// 		$('#mainText').append(document.createTextNode('    '));
-	// 	} else if (e.keyCode == 13) {
-	// 		e.preventDefault()
-	// 	}
-	// })
-
+	var text = document.getElementById('mainText')
+	text.addEventListener('keydown', function(e){
+		if (e.keyCode == 9) {
+			e.preventDefault()
+			console.log('indenting')
+			$('#mainText').append(document.createTextNode('    '));
+		} else if (e.keyCode == 13) {
+			e.preventDefault()
+			document.getElementById("mainText").value = document.getElementById("mainText").value + "\n        ";
+        	return false;
+    	}
+	})
 
 
-	// function add() {
-	//     seconds++;
-	//     if (seconds >= 60) {
-	//         seconds = 0;
-	//         minutes++;
-	//         if (minutes >= 60) {
-	//             minutes = 0;
-	//             hours++;
-	//         }
-	//     }
+
+	function add() {
+	    seconds++;
+	    if (seconds >= 60) {
+	        seconds = 0;
+	        minutes++;
+	        if (minutes >= 60) {
+	            minutes = 0;
+	            hours++;
+	        }
+	    }
 	    
-	//     h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+	    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
 
-	//     timer();
-	// }
-	// function timer() {
-	//     t = setTimeout(add, 1000);
-	//     count()
-	// }
+	    timer();
+	}
+	function timer() {
+	    t = setTimeout(add, 1000);
+	    count()
+	}
 
 
 
-	// /* Start button */
-	// start.onclick = timer;
+	/* Start button */
+	start.onclick = timer;
 
-	// /* Stop button */
-	// stop.onclick = function() {
-	//     clearTimeout(t);
-	// }
+	/* Stop button */
+	stop.onclick = function() {
+	    clearTimeout(t);
+	}
 
-	// /* Clear button */
-	// clear.onclick = function() {
-	//     h1.textContent = "00:00:00";
-	//     seconds = 0; minutes = 0; hours = 0;
-	// }
+	/* Clear button */
+	clear.onclick = function() {
+	    h1.textContent = "00:00:00";
+	    seconds = 0; minutes = 0; hours = 0;
+	}
 
-	// $('select').on('change', function() {
- //  		console.log(this.value);
- //  		var size = parseInt(this.value) + 4
- //  		$('#mainText').attr('style','font-size:' + size + 'px')
-	// })
+
 })
+
+var indenting = true
+
+function changeIndent() {
+
+}
+
+function changeSize() {
+  		var size = parseInt($('select').val()) + 4
+  		$('#mainText').attr('style','font-size:' + size + 'px')
+  		return size
+	}
 
 
 function count() {
@@ -110,11 +97,9 @@ function convert(time) {
 	var words = wordCount()
 	var total = hours + (minutes/60) + (seconds/3600)
 	if (words/total > $('#num').val()) {
-		$('#mainText').attr('style', 'color:black')
-		console.log('on pace')
+		$('#mainText').attr('style', 'color:black;font-size:' + changeSize() + 'px')
 	} else {		
-		$('#mainText').attr('style', 'color:red')
-		console.log('too slow')
+		$('#mainText').attr('style', 'color:red;font-size:' + changeSize() + 'px')
 	}
 
 }
@@ -124,9 +109,15 @@ function wordCount() {
 		$('#count').text(0)
 		return 0
 	} else {
-		var newVal = $('#mainText').val().split(' ').length
-		$('#count').text(newVal)
-		return newVal
+		var newVal = $('#mainText').val().split(' ')
+		var noSpace = []
+		for (var i = 0; i < newVal.length; i++) {
+			if (newVal[i] != '' && newVal[i] != "\n") {
+				noSpace.push(newVal[i])
+			}
+		}
+		$('#count').text(noSpace.length)
+		return noSpace.length
 	}
 }
 
@@ -139,6 +130,144 @@ function show() {
 	$('#show').attr('style','display:none')
 }
 
-function indent() {
-	console.log('indent')
+var newDoc = {
+	title: "",
+	start_count: 0,
+	content: "",
+	user_id: 1
+}
+
+var newUser = {
+	name: "",
+	username: "",
+	password: ""
+}
+
+function saveDoc() {
+	wordCount()
+	newDoc.title = $('#title').val()
+	newDoc.content = $('#mainText').val()
+	newDoc.start_count = parseInt($('#count').text())
+	console.log('lets save')
+	$.ajax({
+		method: 'POST',
+		url: 'api/docs',
+		data: newDoc,
+		success: newDocSuccess,
+		error: newDocError
+	})
+}
+
+function getDoc() {
+	var docId = '1'
+	$.ajax({
+		method: 'GET',
+		url: 'api/docs/' + docId,
+		success: getDocSuccess,
+		error: getDocError
+
+	})
+}
+
+function updateDoc() {
+	var docId = '1'
+	$.ajax({
+		method: 'PATCH',
+		url: 'api/docs/' + docId,
+		success: updateDocSuccess,
+		error: updateDocError
+
+	})
+}
+function createDownload(dir) {
+//		$('#docspan').text("<a download=" + dir + ">Download</a>")
+	console.log(dir)
+}
+
+function createUser() {
+	newUser.name = $('#name').val()
+	newUser.username = $('#email').val()
+	newUser.password = $('#password').val()
+	$.ajax({
+		method: 'POST',
+		url: 'api/users',
+		data: newUser,
+		success: newUserSuccess,
+		error: newUserError
+	})
+}
+
+function deleteDoc(id) {
+	var docId = id;
+	$.ajax({
+		method: 'DESTROY',
+		url: 'api/docs/' + docId,
+		success: destroyDocSuccess,
+		error: destroyDocError
+	})
+}
+
+
+
+function word() {
+	var word = {
+		title: "",
+		content: ""
+	}
+	word.title = $('#title').val()
+	word.content = $('#mainText').val()
+	console.log(word)
+	$.ajax({
+		method: 'POST',
+		data: word,
+		url: 'api/word',
+		success: newDocSuccess,
+		error: newDocError
+	})
+}
+
+function newDocSuccess() {
+	console.log('woohoo')
+}
+
+function newDocError() {
+	console.log('thats too bad')
+}
+
+function newUserSuccess() {
+	console.log('woohoo')
+}
+
+function newUserError() {
+	console.log('thats too bad')
+}
+
+function getDocSuccess() {
+	console.log('woohoo')
+}
+
+function getDocError() {
+	console.log('thats too bad')
+}
+
+function updateDocSuccess() {
+	console.log('woohoo')
+}
+
+function updateDocError() {
+	console.log('thats too bad')
+}
+
+function word() {
+	var docx = new builder.Document();
+	docx.beginHeader();
+	docx.insertText($('#title').text());
+	docx.endHeader();
+	docx.insertText($('#mainText').text());
+	console.log(docx);
+	var myDownload = __dirname + req.body.title + ".docx"
+	docx.save(__dirname + req.body.title + ".docx", function(err) {
+		if(err) {console.log(err)}
+		else {console.log('it may work')}
+	})	
 }
