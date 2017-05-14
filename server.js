@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 app.use(express.static(__dirname));
@@ -114,6 +115,11 @@ passport.use('signup', new LocalStrategy({
     process.nextTick(findOrCreateUser);
   }));
 
+// Generates hash using bCrypt
+var createHash = function(password){
+ return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+}
+
 /**********
  * ROUTES *
  **********/
@@ -132,7 +138,8 @@ app.get('/about', function profilePage(req, res) {
 /*
  * JSON API ENDPOINTS
  */
-  app.post('/api/word', controllers.docs.word)
+
+app.post('/api/word', controllers.docs.word)
  // Get One Doc
 app.get('/api/docs/:id', controllers.docs.show)
 
