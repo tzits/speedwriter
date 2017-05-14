@@ -257,8 +257,8 @@ function updateDocError() {
 	console.log('thats too bad')
 }
 
-var builder = require('docx-builder');
-
+// var builder = require('docx-builder');
+// 
 // function word() {
 // 	var docx = new builder.Document();
 // 	docx.beginHeader();
