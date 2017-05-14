@@ -2,6 +2,8 @@ var db = require('../models');
 var mongoose = require('mongoose');
 
 
+
+
 function getUser(req, res) {
 	var userId = req.params.id;
 	db.User.findById(userId, function(err, user) {

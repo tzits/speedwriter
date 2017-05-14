@@ -18,6 +18,13 @@ var controllers = require('./controllers');
 
 var db = require('./models');
 
+//Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+app.use(expressSession({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 /**********
  * ROUTES *
  **********/
