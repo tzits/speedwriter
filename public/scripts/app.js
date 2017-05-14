@@ -1,5 +1,3 @@
-var builder = require('docx-builder');
-
 $(document).ready(function() {
 	console.log("type away");
 
@@ -210,6 +208,7 @@ function deleteDoc(id) {
 
 
 function word() {
+	console.log('word')
 	var word = {
 		title: "",
 		content: ""
@@ -258,16 +257,18 @@ function updateDocError() {
 	console.log('thats too bad')
 }
 
-function word() {
-	var docx = new builder.Document();
-	docx.beginHeader();
-	docx.insertText($('#title').text());
-	docx.endHeader();
-	docx.insertText($('#mainText').text());
-	console.log(docx);
-	var myDownload = __dirname + req.body.title + ".docx"
-	docx.save(__dirname + req.body.title + ".docx", function(err) {
-		if(err) {console.log(err)}
-		else {console.log('it may work')}
-	})	
-}
+var builder = require('docx-builder');
+
+// function word() {
+// 	var docx = new builder.Document();
+// 	docx.beginHeader();
+// 	docx.insertText($('#title').text());
+// 	docx.endHeader();
+// 	docx.insertText($('#mainText').text());
+// 	console.log(docx);
+// 	var myDownload = __dirname + req.body.title + ".docx"
+// 	docx.save(__dirname + req.body.title + ".docx", function(err) {
+// 		if(err) {console.log(err)}
+// 		else {console.log('it may work')}
+// 	})	
+// }

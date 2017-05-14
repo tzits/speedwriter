@@ -1,5 +1,5 @@
 var db = require('../models');
-
+var builder = require('docx-builder');
 
 function show(req, res) {
 	var docId = req.params.id;

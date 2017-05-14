@@ -7,6 +7,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var builder = require('docx-builder');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -137,7 +138,8 @@ app.get('/about', function profilePage(req, res) {
 /*
  * JSON API ENDPOINTS
  */
-  app.post('/api/word', controllers.docs.word)
+
+app.post('/api/word', controllers.docs.word)
  // Get One Doc
 app.get('/api/docs/:id', controllers.docs.show)
 
