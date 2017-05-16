@@ -72,6 +72,13 @@ function word(req,res) {
 	})
 }
 
+function getalldocs(req,res) {
+	db.Doc.find({}, function(err,docs) {
+		if (err) {console.log('nope')}
+		res.json(docs)
+	})
+}
+
 
 module.exports = {
 	show: show,
@@ -79,5 +86,6 @@ module.exports = {
 	createDoc: createDoc,
 	updateDoc: updateDoc,
 	deleteDoc: deleteDoc,
-	word: word
+	word: word,
+	getalldocs: getalldocs
 }
