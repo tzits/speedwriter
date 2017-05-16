@@ -135,6 +135,10 @@ app.get('/about', function profilePage(req, res) {
 	res.sendFile(__dirname + '/views/about.html');
 });
 
+app.get('/user', function profilePage(req, res) {
+  res.sendFile(__dirname + '/views/user.html');
+});
+
 /*
  * JSON API ENDPOINTS
  */
@@ -149,6 +153,8 @@ app.get('/api/users/:id/docs', controllers.docs.index)
 // // Get One User
 app.get('/api/users/:id', controllers.users.getUser)
 
+
+app.get('/api/docs', controllers.docs.getalldocs)
 // Create User
 app.post('/api/users', controllers.users.createUser)
 

@@ -1,3 +1,27 @@
+angular
+  .module('SpeedWriter', ['ngRoute'])
+  .config(config)
+    
+config.$inject = ['$routeProvider', '$locationProvider']    
+function config(   $routeProvider,  $locationProvider   ) {
+  $routeProvider
+    .when('/user', {
+      templateUrl: '../views/templates/documents.html',
+      controllerAs: 'docsIndexCtrl',
+      controller: 'DocsIndexController'
+    })
+    .when('/docs/:id', {
+      templateUrl: '/templates/docsshow',
+      controllerAs: 'docsShowCtrl',
+      controller: 'DocsShowController'
+    })
+
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+}
+
 $(document).ready(function() {
 	console.log("type away");
 
