@@ -11,7 +11,7 @@ function config(   $routeProvider,  $locationProvider   ) {
       controller: 'DocsIndexController'
     })
     .when('/docs/:id', {
-      templateUrl: '/templates/docsshow',
+      templateUrl: '../views/templates/docshow.html',
       controllerAs: 'docsShowCtrl',
       controller: 'DocsShowController'
     })
