@@ -17,5 +17,13 @@ function DocsShowController ( $http, $routeParams) {
 	}).then(function successCallback(json) {
 		vm.doc = json.data;
 		console.log(vm.doc)
+		var theUser = vm.doc.user;		
+		$http({
+			method: 'GET',
+			url: '/api/users/' + theUser
+		}).then(function successfulCallback(json) {
+			vm.user = json.data;
+			console.log(vm.user)
+		})
 	})
 }
