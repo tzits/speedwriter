@@ -41,16 +41,16 @@ passport.deserializeUser(function(id, done) {
 passport.use('login', new LocalStrategy({
     passReqToCallback : true
   },
-  function(req, username, password, done) { 
+  function(req, email, password, done) { 
     // check in mongo if a user with username exists or not
-    User.findOne({ 'username' :  username }, 
+    User.findOne({ 'email' :  email }, 
       function(err, user) {
         // In case of any error, return using the done method
         if (err)
           return done(err);
         // Username does not exist, log error & redirect back
         if (!user){
-          console.log('User Not Found with username '+username);
+          console.log('User Not Found with email '+ email);
           return done(null, false, 
                 req.flash('message', 'User Not found.'));                 
         }
@@ -74,10 +74,10 @@ var isValidPassword = function(user, password){
 passport.use('signup', new LocalStrategy({
     passReqToCallback : true
   },
-  function(req, username, password, done) {
+  function(req, email, password, done) {
     findOrCreateUser = function(){
       // find a user in Mongo with provided username
-      User.findOne({'username':username},function(err, user) {
+      User.findOne({'email':email},function(err, user) {
         // In case of any error return
         if (err){
           console.log('Error in SignUp: '+err);
@@ -93,9 +93,9 @@ passport.use('signup', new LocalStrategy({
           // create the user
           var newUser = new User();
           // set the user's local credentials
-          newUser.username = username;
+          newUser.email = email;
           newUser.password = createHash(password);
-          newUser.firstName = req.param('firstName');
+          newUser.name = req.param('name');
  
           // save the user
           newUser.save(function(err) {

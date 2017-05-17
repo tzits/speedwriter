@@ -5,7 +5,6 @@ angular
 DocsShowController.$inject = ['$http', '$routeParams'];
 	
 function DocsShowController ( $http, $routeParams) {
-	console.log('show me the monkey')
 	console.log($routeParams)
 	var vm = this;
 	console.log($routeParams.id);
