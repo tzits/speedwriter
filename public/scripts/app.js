@@ -25,7 +25,6 @@ function config(   $routeProvider,  $locationProvider   ) {
     requireBase: false
   });
 }
-// 592123f95db954311703c979
 $(document).ready(function() {
 	console.log("type away");
 
