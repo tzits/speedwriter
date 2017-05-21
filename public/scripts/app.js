@@ -15,7 +15,11 @@ function config(   $routeProvider,  $locationProvider   ) {
       controllerAs: 'docsShowCtrl',
       controller: 'DocsShowController'
     })
-
+    .when('/edit/:id', {
+      templateUrl: '../views/templates/editdoc.html',
+      controllerAs: 'docsEditCtrl',
+      controller: 'DocsEditController'
+    })
   $locationProvider.html5Mode({
     enabled: true,
     requireBase: false
