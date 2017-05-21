@@ -5,10 +5,7 @@ var User = require('./Users');
 
 var DocSchema = new Schema({
 	title: String,
-	user: {
-		type: Schema.Types.ObjectId,
-		ref: 'User'
-	},
+	user: String,
 	start_count: Number,
 	content: String
 })

@@ -135,8 +135,8 @@ app.get('/about', function profilePage(req, res) {
 	res.sendFile(__dirname + '/views/about.html');
 });
 
-app.get('/user', function profilePage(req, res) {
-  res.sendFile(__dirname + '/views/user.html');
+app.get('/users/*', function profilePage(req, res) {
+  res.sendFile(__dirname + '/views/users.html');
 });
 
 /*
