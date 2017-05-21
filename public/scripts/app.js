@@ -5,7 +5,7 @@ angular
 config.$inject = ['$routeProvider', '$locationProvider']    
 function config(   $routeProvider,  $locationProvider   ) {
   $routeProvider
-    .when('/user', {
+    .when('/users/:id', {
       templateUrl: '../views/templates/documents.html',
       controllerAs: 'docsIndexCtrl',
       controller: 'DocsIndexController'
@@ -25,7 +25,7 @@ function config(   $routeProvider,  $locationProvider   ) {
     requireBase: false
   });
 }
-
+// 592123f95db954311703c979
 $(document).ready(function() {
 	console.log("type away");
 
