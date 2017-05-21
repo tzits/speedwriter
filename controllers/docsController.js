@@ -39,6 +39,7 @@ function createDoc(req, res) {
 }
 
 function updateDoc(req, res) {
+	console.log(req.body)
 	var updatedDoc = req.body;
 	var docId = req.params.id;
 	console.log("docId found: " + docId);
@@ -46,6 +47,7 @@ function updateDoc(req, res) {
 		if (err) {throw err};
 		console.log(foundDoc);
 		foundDoc.save();
+		console.log('i did it!!!!!!')
 		res.json(foundDoc);
 	});
 }

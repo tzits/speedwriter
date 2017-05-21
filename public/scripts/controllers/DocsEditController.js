@@ -2,9 +2,9 @@ angular
   .module("SpeedWriter")
   .controller('DocsEditController', DocsEditController);
 
-DocsEditController.$inject = ['$http', '$routeParams'];
+DocsEditController.$inject = ['$http', '$routeParams','$scope'];
 	
-function DocsEditController ( $http, $routeParams) {
+function DocsEditController ( $http, $routeParams, $scope) {
 	console.log($routeParams)
 	var vm = this;
 	console.log($routeParams.id);

@@ -1,3 +1,4 @@
+	<span id='doc_id'>{{docsEditCtrl.doc._id}}</span>
 	<span id='word-count'>Word Count: <span id='count'>0</span></span><span><input id='startWordCount' type='number' value="{{docsEditCtrl.doc.start_count}}"></span>
 	<span class='pull-right' id='num-span'>
 		<form id='word-input'>
@@ -23,7 +24,7 @@
 			<option value='30'>30</option>		
 		</select>
 	</span>
-	<span id='saveDoc'><button onclick="saveDoc()">Save Doc</button></span><button id='word' onclick="word()">Save as word</button><span id='docspan'></span>
+	<span id='saveDoc'><button onclick="updateDoc()">Update Doc</button></span><button id='word' onclick="word()">Save as word</button><span id='docspan'></span>
 	<input id='title' class='center-block' placeholder="title" value="{{docsEditCtrl.doc.title}}"><br>
 
 

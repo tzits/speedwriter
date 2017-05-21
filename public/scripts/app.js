@@ -197,16 +197,15 @@ function getDoc() {
 	})
 }
 
-function updateDoc() {
-	var docId = '1'
-	$.ajax({
-		method: 'PATCH',
-		url: 'api/docs/' + docId,
-		success: updateDocSuccess,
-		error: updateDocError
+// function updateDoc() {
+// 	$.ajax({
+// 		method: 'PATCH',
+// 		url: 'api/docs/' + docId,
+		// success: updateDocSuccess,
+		// error: updateDocError
 
-	})
-}
+// 	})
+// }
 function createDownload(dir) {
 //		$('#docspan').text("<a download=" + dir + ">Download</a>")
 	console.log(dir)
@@ -252,6 +251,25 @@ function word() {
 		url: 'api/word',
 		success: newDocSuccess,
 		error: newDocError
+	})
+}
+
+
+
+function updateDoc() {
+	var updatedDoc = {}
+	updatedDoc.content = $('#mainText').val()
+	updatedDoc.title = $('#title').val()
+	updatedDoc.start_count = $('#count').text()
+	var array = location.href.split('/')
+	var docId = array[array.length-1]
+	parseInt($('#doc_id').text())
+	$.ajax({
+		method: 'PATCH',
+		url: '/api/docs/' + docId,
+		data: updatedDoc,
+		success: updateDocSuccess,
+		error: updateDocError
 	})
 }
 
