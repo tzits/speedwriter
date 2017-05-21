@@ -10,9 +10,11 @@ function show(req, res) {
 }
 
 function index(req, res) {
+	console.log(req.params,'1')
 	var userId = req.params.id;
-	db.Doc.find({user_id: userId}, function(err, docs) {
-		if (err) { throw err; };
+
+	db.Doc.find({"user": userId}, function(err, docs) {
+		if (err) { console.log(err); } else {console.log(docs)};
 		res.json(docs);
 	});
 }

@@ -10,7 +10,7 @@ function DocsIndexController ($http) {
 	// vm.newPet = {};	
   $http({
     method: 'GET',
-    url: '/api/docs'
+    url: '/api/users/59213854055fff379aeb1967/docs'
   }).then(function successCallback(response) {
     vm.docs = response.data;
   }, function errorCallback(response) {

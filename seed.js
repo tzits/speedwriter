@@ -46,9 +46,12 @@ db.User.remove({}, function(err, users){
 	userList.forEach(function(userdata) {
 		var user = new db.User(userdata)
 		user.save(function(err, savedUser) {
-			if (err) {console.log(err)}
-		})
-	})
+			if (err) {console.log(err)
+		} else {
+	      	console.log(savedUser)
+	      }
+	  }
+	)})
 })
 
 
@@ -60,7 +63,7 @@ db.Doc.remove({}, function(err, docs){
         console.log('we fucked up');
         return;
       }
-      doc.user = foundUser;
+      doc.user = foundUser._id;
       doc.save(function(err, savedDoc) {
 	      if (err) {
 	        return console.log(err);
