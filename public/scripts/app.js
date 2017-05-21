@@ -117,8 +117,10 @@ function convert(time) {
 	var minutes = parseInt(separate[1])
 	var seconds = parseInt(separate[2])
 	var words = wordCount()
+	var startWordCount = $('#startWordCount').val()
+	var newWords = words - startWordCount
 	var total = hours + (minutes/60) + (seconds/3600)
-	if (words/total > $('#num').val()) {
+	if (newWords/total > $('#num').val()) {
 		$('#mainText').attr('style', 'color:black;font-size:' + changeSize() + 'px')
 	} else {		
 		$('#mainText').attr('style', 'color:red;font-size:' + changeSize() + 'px')

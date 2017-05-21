@@ -70,3 +70,18 @@ body {
 	text-decoration: none;
 	color: black;
 }
+
+.header {
+	display:inline!important;
+}
+
+#see_count {
+	display: inline;
+	float:right;
+	margin-right:4%;
+}
+
+#startWordCount {
+	width: 50px;
+	margin-left: 10px
+}
