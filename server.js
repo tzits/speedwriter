@@ -21,7 +21,7 @@ var db = require('./models');
 
 //Passport
 var passport = require('passport');
-LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var expressSession = require('express-session');
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
