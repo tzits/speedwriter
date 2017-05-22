@@ -1,7 +1,7 @@
 var db = require('../models');
+var passport = require('passport');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-
 
 function getUser(req, res) {
 	var userId = req.params.id;
@@ -22,10 +22,39 @@ function createUser(req, res) {
 			{ console.log('nice try',err) 
 		} else {
 			console.log(user,'created');
-			res.json(user);
+			var token = user.generateJwt();
+			res.status(200);
+			res.json({
+				"token": token
+			});
 		}
 	});
+
 }
+
+function login(req,res) {
+	console.log('moop')
+	 passport.authenticate('local', function(err, user, info){
+    var token;
+    // If Passport throws/catches an error
+    if (err) {
+      res.status(404).json('passport error ' + err);
+      return;
+    }
+    // If a user is found
+    if(user){
+      token = user.generateJwt();
+      req.app.user = user;
+      res.status(200);
+      res.json({
+        "token" : token
+      });
+    } else {
+      // If user is not found
+      res.status(401).json('user not found, ' + info);
+    }
+  })(req, res);
+};
 
 function updateUser(req, res) {
 	var updatedUser = req.body;
@@ -42,5 +71,6 @@ function updateUser(req, res) {
 module.exports = {
 	getUser: getUser,
 	createUser: createUser,
-	updateUser: updateUser
+	updateUser: updateUser,
+	login: login
 }
