@@ -18,6 +18,7 @@ app.use(express.static(__dirname));
 var controllers = require('./controllers');
 
 var db = require('./models');
+var User = db.User
 
 //Passport
 var passport = require('passport');
@@ -27,6 +28,8 @@ app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(function(user, done) {
   done(null, user._id);
 });
