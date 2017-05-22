@@ -196,21 +196,12 @@ function getDoc() {
 	})
 }
 
-// function updateDoc() {
-// 	$.ajax({
-// 		method: 'PATCH',
-// 		url: 'api/docs/' + docId,
-		// success: updateDocSuccess,
-		// error: updateDocError
-
-// 	})
-// }
 function createDownload(dir) {
 //		$('#docspan').text("<a download=" + dir + ">Download</a>")
 	console.log(dir)
 }
 
-function createUser() {
+function signUp() {
 	newUser.name = $('#name').val()
 	newUser.username = $('#email').val()
 	newUser.password = $('#password').val()
