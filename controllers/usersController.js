@@ -2,8 +2,6 @@ var db = require('../models');
 var mongoose = require('mongoose');
 
 
-
-
 function getUser(req, res) {
 	var userId = req.params.id;
 	db.User.findById(userId, function(err, user) {
@@ -14,9 +12,12 @@ function getUser(req, res) {
 
 function createUser(req, res) {
 	db.User.create(req.body, function(err, user) {
-		if (err) { console.log('nice try') };
-		console.log('it worked');
-		res.json(user);
+		if (err) 
+			{ console.log('nice try',err) 
+		} else {
+			console.log(user,'created');
+			res.json(user);
+		}
 	});
 }
 
