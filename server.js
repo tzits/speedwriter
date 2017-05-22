@@ -75,6 +75,9 @@ app.get('/api/docs', controllers.docs.getalldocs)
 // Create User
 app.post('/api/users', controllers.users.createUser)
 
+// Login
+app.post('/api/login', controllers.users.login)
+
 // Create Document
 app.post('/api/docs', controllers.docs.createDoc)
 
