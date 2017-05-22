@@ -203,7 +203,7 @@ function createDownload(dir) {
 
 function signUp() {
 	newUser.name = $('#name').val()
-	newUser.username = $('#email').val()
+	newUser.email = $('#email').val()
 	newUser.password = $('#password').val()
 	$.ajax({
 		method: 'POST',

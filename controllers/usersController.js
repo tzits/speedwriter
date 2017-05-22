@@ -13,7 +13,7 @@ function getUser(req, res) {
 function createUser(req, res) {
 	db.User.create(req.body, function(err, user) {
 		if (err) 
-			{ console.log('nice try') 
+			{ console.log('nice try',err) 
 		} else {
 			console.log(user,'created');
 			res.json(user);
