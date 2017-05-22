@@ -1,5 +1,6 @@
 var db = require('../models');
 var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 
 function getUser(req, res) {
@@ -11,7 +12,12 @@ function getUser(req, res) {
 }
 
 function createUser(req, res) {
-	db.User.create(req.body, function(err, user) {
+	var newUser = new User();
+	newUser.name = req.body.name;
+	newUser.email = req.body.email;
+	newUser.setPassword(req.body.password);
+
+	db.User.create(newUser, function(err, user) {
 		if (err) 
 			{ console.log('nice try',err) 
 		} else {
