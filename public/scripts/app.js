@@ -214,6 +214,18 @@ function signUp() {
 	})
 }
 
+function login() {
+	newUser.email = $('#email1').val()
+	newUser.password = $('#password1').val()
+	$.ajax({
+		method: 'POST',
+		url: '/login',
+		data: newUser,
+		success: newUserSuccess,
+		error: newUserError
+	})
+}
+
 function deleteDoc(id) {
 	var docId = id;
 	$.ajax({
