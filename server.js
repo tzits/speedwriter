@@ -7,12 +7,14 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 app.use(express.static(__dirname));
+app.use(cookieParser());
 
 
 var controllers = require('./controllers');
@@ -29,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-passport.use(new LocalStrategy(User.authenticate()));
+// passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(function(user, done) {
   done(null, user._id);
 });
