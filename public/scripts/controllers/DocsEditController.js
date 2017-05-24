@@ -2,7 +2,7 @@ angular
   .module("SpeedWriter")
   .controller('DocsEditController', DocsEditController);
 
-DocsEditController.$inject = ['$http', '$routeParams','$scope'];
+DocsEditController.$inject = ['$http', '$routeParams', '$scope'];
 	
 function DocsEditController ( $http, $routeParams, $scope) {
 	console.log($routeParams)
@@ -10,6 +10,10 @@ function DocsEditController ( $http, $routeParams, $scope) {
 	console.log($routeParams.id);
 	var docId= $routeParams.id
 	console.log(docId)
+
+	$scope.log = function() {
+		$scope.logged = "It worked"
+	}
 
 	$http({
 	method: 'GET',
