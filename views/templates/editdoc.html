@@ -3,7 +3,7 @@
 	<span class='pull-right' id='num-span'>
 		<form id='word-input'>
 			Words Per Hour:
-			<input id='num' type="number" name="quantity" min="1" max="2000" placeholder='1000' value='1000'>
+			<input id='num' type="number" name="quantity" min="1" max="2000" placeholder={{pace}} value='1000'>
 		</form>
 	</span><br>
 	<div class='pull-right' id='timer-container'>
@@ -14,7 +14,7 @@
 		<button id='hide' onclick="hide()">hide</button>
 	</div>
 	<button class='pull-right' id='show' onclick="show()">show timer</button>
-	<button ng-click="log()">log</button>
+	<button ng-click="wordCount()">log</button>
 	<span>{{logged}}</span>
 	<br><br>
 	<span id='font-change'>Font Size
@@ -29,4 +29,4 @@
 	<input id='title' class='center-block' placeholder="title" value="{{docsEditCtrl.doc.title}}"><br>
 
 
-	<textarea id="mainText" cols="90%" rows="50">{{docsEditCtrl.doc.content}}</textarea>
+	<textarea  ng-model='mainText' id="mainText" cols="90%" rows="50">{{docsEditCtrl.doc.content}}</textarea>

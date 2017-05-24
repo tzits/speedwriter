@@ -19,9 +19,8 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 
     $scope.Timer = '00:00:00'
 
-	$scope.log = function() {
-		$scope.logged = "It worked"
-	}
+    $scope.pace = 1000
+
 	$scope.start = function() {
 		$scope.logged = "Timer should start now"
 		timer = $interval(function() {
@@ -49,6 +48,33 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	minutes = 0
     	hours = 0
     }
+
+    $scope.wordCount = function() {
+    	$scope.logged = (vm.doc.start_count)
+    	if ($scope.mainText == '') {
+    		$scope.logged = 0
+    	}
+
+    }
+//     function wordCount() {
+// 	if ($('#mainText').val() == '') {
+// 		$('#count').text(0)
+// 		return 0
+// 	} else {
+// 		var newVal = $('#mainText').val().split(' ')
+// 		var noSpace = []
+// 		for (var i = 0; i < newVal.length; i++) {
+// 			if (newVal[i] != '' && newVal[i] != "\n") {
+// 				noSpace.push(newVal[i])
+// 			}
+// 		}
+// 		$('#count').text(noSpace.length)
+// 		return noSpace.length
+// 	}
+// }
+
+
+
 
 	$http({
 	method: 'GET',
