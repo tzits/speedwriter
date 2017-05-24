@@ -17,6 +17,8 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     seconds = 0, minutes = 0, hours = 0,
     t;
 
+    $scope.Timer = '00:00:00'
+
 	$scope.log = function() {
 		$scope.logged = "It worked"
 	}
@@ -32,10 +34,21 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 	            hours++;
 		    }
 		}
-		h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+		$scope.Timer = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
 		}, 1000)
-
 	}
+
+	$scope.stop = function() {
+		$scope.logged = 'i hope against hope'
+        $interval.cancel(timer);
+    };
+
+    $scope.clear = function() {
+    	$scope.Timer = '00:00:00'
+    	seconds = 0
+    	minutes = 0
+    	hours = 0
+    }
 
 	$http({
 	method: 'GET',

@@ -7,10 +7,10 @@
 		</form>
 	</span><br>
 	<div class='pull-right' id='timer-container'>
-		<h1 id='time'>00:00:00</h1>
+		<h1 id='time'>{{Timer}}</h1>
 		<button id="start" ng-click="start()">start</button>
-		<button id="stop">stop</button>
-		<button id="clear">clear</button>
+		<button id="stop" ng-click="stop()">stop</button>
+		<button id="clear" ng-click="clear()">clear</button>
 		<button id='hide' onclick="hide()">hide</button>
 	</div>
 	<button class='pull-right' id='show' onclick="show()">show timer</button>
