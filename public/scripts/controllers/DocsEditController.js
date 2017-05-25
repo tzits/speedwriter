@@ -103,4 +103,20 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 		return size
     }
 
+    $scope.updateDoc = function() {
+    	var updatedDoc = {};
+    	updatedDoc.content = $('#mainText').val();
+    	updatedDoc.title = $('#title').val();
+		updatedDoc.start_count = parseInt($('#total').text());
+		var docId = $('#doc_id').text()
+		$http({
+			method: 'PATCH',
+			url: '/api/docs/' + docId
+		}).then(function successCallback(json) {
+			vm.doc = json.data;
+			console.log(vm.doc)
+			window.location = '/users/' + vm.doc.user
+		})
+    }
+
 }
