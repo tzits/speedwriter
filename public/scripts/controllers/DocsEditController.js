@@ -98,4 +98,9 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	}
     }
 
+    $scope.changeSize = function() {
+    	var size = parseInt($('select').val()) + 4
+		return size
+    }
+
 }
