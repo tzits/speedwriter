@@ -63,6 +63,7 @@ db.Doc.remove({}, function(err, docs){
         console.log('we fucked up');
         return;
       }
+      console.log(foundUser)
       doc.user = foundUser._id;
       doc.save(function(err, savedDoc) {
 	      if (err) {
