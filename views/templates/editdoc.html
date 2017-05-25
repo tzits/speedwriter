@@ -1,5 +1,6 @@
 	<span id='doc_id'>{{docsEditCtrl.doc._id}}</span>
-	<span id='word-count'>Word Count: <span id='count'>0</span></span><span><input id='startWordCount' type='number' value="{{docsEditCtrl.doc.start_count}}"></span>
+	<span id='word-count'>Words Added: <span id='count'>0</span></span>
+	<span id='startWordCount'>Starting Word Count: <span>{{docsEditCtrl.doc.start_count}}</span>
 	<span class='pull-right' id='num-span'>
 		<form id='word-input'>
 			Words Per Hour:
@@ -29,4 +30,4 @@
 	<input id='title' class='center-block' placeholder="title" value="{{docsEditCtrl.doc.title}}"><br>
 
 
-	<textarea  ng-model='mainText' id="mainText" cols="90%" rows="50">{{docsEditCtrl.doc.content}}</textarea>
+	<textarea id="mainText" cols="90%" rows="50" ng-model='mainText' ng-init='init()'>{{docsEditCtrl.doc.content}}</textarea>

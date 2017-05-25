@@ -17,23 +17,42 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     seconds = 0, minutes = 0, hours = 0,
     t;
 
+    $scope.init = function(){
+	    $http({
+		method: 'GET',
+		url: '/api/docs/'+ docId
+		}).then(function successCallback(json) {
+			vm.doc = json.data;
+			console.log(vm.doc)
+	        $scope.mainText = vm.doc.content
+			var theUser = vm.doc.user;		
+			$http({
+				method: 'GET',
+				url: '/api/users/' + theUser
+			}).then(function successfulCallback(json) {
+				vm.user = json.data;
+				console.log(vm.user)
+			})
+		})
+	};
+
     $scope.Timer = '00:00:00'
 
     $scope.pace = 1000
 
 	$scope.start = function() {
-		$scope.logged = "Timer should start now"
 		timer = $interval(function() {
-	    seconds++;
-	    if (seconds >= 60) {
-	        seconds = 0;
-	        minutes++;
-	        if (minutes >= 60) {
-	            minutes = 0;
-	            hours++;
-		    }
-		}
-		$scope.Timer = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+			$scope.wordCount()
+		    seconds++;
+		    if (seconds >= 60) {
+		        seconds = 0;
+		        minutes++;
+		        if (minutes >= 60) {
+		            minutes = 0;
+		            hours++;
+			    }
+			}
+			$scope.Timer = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
 		}, 1000)
 	}
 
@@ -42,6 +61,7 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
         $interval.cancel(timer);
     };
 
+
     $scope.clear = function() {
     	$scope.Timer = '00:00:00'
     	seconds = 0
@@ -49,13 +69,31 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	hours = 0
     }
 
+    // $scope.wordCount = function() {
+    // 	$scope.logged = (vm.doc.start_count)
+    // 	if ($scope.mainText == '') {
+    // 		$scope.logged = 0
+    // 	} else {
+
+    // 	}
+
+    // }
+
     $scope.wordCount = function() {
-    	$scope.logged = (vm.doc.start_count)
     	if ($scope.mainText == '') {
     		$scope.logged = 0
+    	} else {
+    		var split = $scope.mainText.split(' ')
+    		var noSpace = []
+    		for (var i = 0; i < split.length; i ++) {
+    			if (split[i] != '' && split[i] != "\n") {
+    				noSpace.push(split[i])
+    			}
+    		$scope.logged = noSpace.length
+    		}
     	}
-
     }
+
 //     function wordCount() {
 // 	if ($('#mainText').val() == '') {
 // 		$('#count').text(0)
@@ -76,19 +114,5 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 
 
 
-	$http({
-	method: 'GET',
-	url: '/api/docs/'+ docId
-	}).then(function successCallback(json) {
-		vm.doc = json.data;
-		console.log(vm.doc)
-		var theUser = vm.doc.user;		
-		$http({
-			method: 'GET',
-			url: '/api/users/' + theUser
-		}).then(function successfulCallback(json) {
-			vm.user = json.data;
-			console.log(vm.user)
-		})
-	})
+
 }
