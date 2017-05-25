@@ -10,11 +10,6 @@ function config(   $routeProvider,  $locationProvider   ) {
       controllerAs: 'docsIndexCtrl',
       controller: 'DocsIndexController'
     })
-    .when('/docs/:id', {
-      templateUrl: '../views/templates/docshow.html',
-      controllerAs: 'docsShowCtrl',
-      controller: 'DocsShowController'
-    })
     .when('/edit/:id', {
       templateUrl: '../views/templates/editdoc.html',
       controllerAs: 'docsEditCtrl',
