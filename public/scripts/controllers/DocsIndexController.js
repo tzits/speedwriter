@@ -2,9 +2,9 @@ angular
   .module("SpeedWriter")
   .controller('DocsIndexController', DocsIndexController);
 
-DocsIndexController.$inject = ['$http'];
+DocsIndexController.$inject = ['$http','$scope','$location'];
 
-function DocsIndexController ($http) {
+function DocsIndexController ($http, $scope, $location) {
   console.log("angular in action")
 	var vm = this
   var array = location.href.split('/')
@@ -18,4 +18,24 @@ function DocsIndexController ($http) {
   }, function errorCallback(response) {
     console.log('There was an error getting the data', response);
   });
+
+  $scope.newDoc = function() {
+    var newDoc = { 
+      title: '',
+      content: '',
+      start_count: 0,
+      user: userId
+    }
+    $http({
+      method: 'POST',
+      url: '/api/docs',
+      data: newDoc
+    }).then(function successCallback(response) {
+      vm.newDoc = response.data;
+      console.log(vm.newDoc)
+      $location.path("/edit/" + vm.newDoc._id)
+    }, function errorCallback(response) {
+      console.log('no new doc')
+    })
+  }
 }

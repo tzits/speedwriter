@@ -20,25 +20,17 @@ function index(req, res) {
 }
 
 function createDoc(req, res) {
-	console.log(req.body, "hello")
-	// db.User.find({id: req.params.id}, function(err,user) {
-	// 	if (user == false) {
-	// 		console.log('hell no');
-	// 		res.send('No');
-	// 	} else {
-	// 			console.log(user)
-	// 			var ourUser = user[0]._id
-	// 			var newDoc = req.body;
-	// 			newDoc.user = ourUser;
-	// 			db.Doc.create(newDoc, function(err, doc) {
-	// 			if (err) { console.log('so close');}
-	// 			res.json(doc);
-	// 			doc.save()
-	// 		})
+	var newDoc = req.body
+	db.Doc.create(newDoc, function(err, doc) {
+		if (err) { console.log('so close', err);}
+		else {
+			res.json(doc);
+			doc.save()
+		}
+	})
 
-	// 	}
-	// })
 }
+
 
 function updateDoc(req, res) {
 	console.log(req.body)

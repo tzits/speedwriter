@@ -1,3 +1,7 @@
-<div ng-repeat = "doc in docsIndexCtrl.docs">
-	<a ng-href = "/docs/{{doc._id}}">{{doc.title}}</a>
+<div><button id='new' ng-click='newDoc()'>Create New</button></div><br>
+<div class="doc-container" ng-repeat = "doc in docsIndexCtrl.docs">
+
+		<h3>{{doc.title}}</h3>
+		<span class='doc-content'>{{(doc.content).substring(0,500)}}...</span>
+			<a ng-href = "/edit/{{doc._id}}">Keep Working</a>
 </div>

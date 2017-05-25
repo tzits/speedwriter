@@ -89,3 +89,21 @@ body {
 #doc_id {
 	display: none;
 }
+
+.doc-container {
+	display: inline-block;
+	width: 30%;
+	margin-left: 2%;
+	text-decoration: none;
+}
+
+.doc-content {
+	height: 50px;
+	text-align: left;
+}
+
+#new {
+	height: 30px;
+	border-radius: 5px;
+	margin-left: 2%;
+}
