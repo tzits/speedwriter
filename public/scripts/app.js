@@ -97,7 +97,6 @@ function changeIndent() {
 
 function changeSize() {
 	var size = parseInt($('select').val()) + 4
-	$('#mainText').attr('style','font-size:' + size + 'px')
 	return size
 }
 
