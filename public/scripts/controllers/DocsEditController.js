@@ -54,6 +54,8 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 			    }
 			}
 			$scope.Timer = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+			var total = parseFloat(hours) + parseFloat(minutes/60) + parseFloat(seconds/3600)
+			$scope.color(total)
 		}, 1000)
 	}
 
@@ -81,12 +83,19 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     				noSpace.push(split[i])
     			}
     		}
-    		console.log(noSpace.length)
-    		$scope.logged = noSpace.length
+    		$scope.logged = noSpace.length - vm.doc.start_count
     	}
     }
     $scope.addEm = function() {
-    	$scope.total = 'total: ' + parseInt(vm.doc.start_count + parseInt(wordCount()) )
+    	$scope.total = parseInt(wordCount())
+    }
+
+    $scope.color = function(total) {
+    	if ($scope.logged / total > $scope.pace) {
+			$('#mainText').attr('style', 'color:black;font-size:' + changeSize() + 'px')
+    	} else {
+			$('#mainText').attr('style', 'color:red;font-size:' + changeSize() + 'px')
+    	}
     }
 
 }

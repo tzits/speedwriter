@@ -1,10 +1,10 @@
 	<span id='doc_id'>{{docsEditCtrl.doc._id}}</span>
-	<span id='word-count'>Words Added: </span><span>{{logged}}</span><span id='total'>{{total}}</span>
-	<span id='startWordCount'>Starting Word Count: <span>{{docsEditCtrl.doc.start_count}}</span>
+	<span id='word-count'>Words Added: </span><span>{{logged}}</span>
+	<span id='startWordCount'>Total: </span><span id='total'>{{total}}</span>
 	<span class='pull-right' id='num-span'>
 		<form id='word-input'>
 			Words Per Hour:
-			<input id='num' type="number" name="quantity" min="1" max="2000" placeholder={{pace}} value='1000'>
+			<input id='num' type="number" name="quantity" min="1" max="2000" ng-model=pace value='1000'>
 		</form>
 	</span><br>
 	<div class='pull-right' id='timer-container'>
