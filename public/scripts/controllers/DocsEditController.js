@@ -69,16 +69,6 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	hours = 0
     }
 
-    // $scope.wordCount = function() {
-    // 	$scope.logged = (vm.doc.start_count)
-    // 	if ($scope.mainText == '') {
-    // 		$scope.logged = 0
-    // 	} else {
-
-    // 	}
-
-    // }
-
     $scope.wordCount = function() {
     	if ($scope.mainText == '') {
     		$scope.logged = 0
@@ -89,30 +79,9 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     			if (split[i] != '' && split[i] != "\n") {
     				noSpace.push(split[i])
     			}
-    		$scope.logged = noSpace.length
+    		$scope.logged = noSpace.length - vm.doc.start_count
     		}
     	}
     }
-
-//     function wordCount() {
-// 	if ($('#mainText').val() == '') {
-// 		$('#count').text(0)
-// 		return 0
-// 	} else {
-// 		var newVal = $('#mainText').val().split(' ')
-// 		var noSpace = []
-// 		for (var i = 0; i < newVal.length; i++) {
-// 			if (newVal[i] != '' && newVal[i] != "\n") {
-// 				noSpace.push(newVal[i])
-// 			}
-// 		}
-// 		$('#count').text(noSpace.length)
-// 		return noSpace.length
-// 	}
-// }
-
-
-
-
 
 }
