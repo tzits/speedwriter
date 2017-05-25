@@ -173,7 +173,7 @@ function saveDoc() {
 	wordCount()
 	newDoc.title = $('#title').val()
 	newDoc.content = $('#mainText').val()
-	newDoc.start_count = parseInt($('#count').text())
+	newDoc.start_count = parseInt($('#total').text())
 	console.log('lets save')
 	$.ajax({
 		method: 'POST',
@@ -261,7 +261,7 @@ function updateDoc() {
 	var updatedDoc = {}
 	updatedDoc.content = $('#mainText').val()
 	updatedDoc.title = $('#title').val()
-	updatedDoc.start_count = $('#count').text()
+	updatedDoc.start_count = parseInt($('#total').text())
 	var array = location.href.split('/')
 	var docId = array[array.length-1]
 	parseInt($('#doc_id').text())
