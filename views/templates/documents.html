@@ -1,7 +1,7 @@
 <div><button id='new' ng-click='newDoc()'>Create New</button></div><br>
 <div class="doc-container" ng-repeat = "doc in docsIndexCtrl.docs">
-
 		<h3>{{doc.title}}</h3>
 		<span class='doc-content'>{{(doc.content).substring(0,500)}}...</span>
 			<a ng-href = "/edit/{{doc._id}}">Keep Working</a>
+			<button ng-click='deleteDoc(doc)'>Delete</button>
 </div>

@@ -2,9 +2,9 @@ angular
   .module("SpeedWriter")
   .controller('DocsIndexController', DocsIndexController);
 
-DocsIndexController.$inject = ['$http','$scope','$location'];
+DocsIndexController.$inject = ['$http','$scope','$location', '$window'];
 
-function DocsIndexController ($http, $scope, $location) {
+function DocsIndexController ($http, $scope, $location, $window) {
   console.log("angular in action")
 	var vm = this
   var array = location.href.split('/')
@@ -36,6 +36,18 @@ function DocsIndexController ($http, $scope, $location) {
       $location.path("/edit/" + vm.newDoc._id)
     }, function errorCallback(response) {
       console.log('no new doc')
+    })
+  }
+
+  $scope.deleteDoc = function(doc) {
+    $http({
+      method: 'DELETE',
+      url: '/api/docs/' + doc._id
+    }).then(function successCallback(response) {
+      console.log('gonezo')
+      $window.location.reload()
+    }, function errorCallback(response) {
+      console.log(response,'this is sad')
     })
   }
 }
