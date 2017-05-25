@@ -43,6 +43,7 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 	$scope.start = function() {
 		timer = $interval(function() {
 			$scope.wordCount()
+			$scope.addEm()
 		    seconds++;
 		    if (seconds >= 60) {
 		        seconds = 0;
@@ -57,7 +58,6 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 	}
 
 	$scope.stop = function() {
-		$scope.logged = 'i hope against hope'
         $interval.cancel(timer);
     };
 
@@ -73,15 +73,20 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	if ($scope.mainText == '') {
     		$scope.logged = 0
     	} else {
+    		var count = 0
     		var split = $scope.mainText.split(' ')
     		var noSpace = []
     		for (var i = 0; i < split.length; i ++) {
     			if (split[i] != '' && split[i] != "\n") {
     				noSpace.push(split[i])
     			}
-    		$scope.logged = noSpace.length - vm.doc.start_count
     		}
+    		console.log(noSpace.length)
+    		$scope.logged = noSpace.length
     	}
+    }
+    $scope.addEm = function() {
+    	$scope.total = 'total: ' + parseInt(vm.doc.start_count + parseInt(wordCount()) )
     }
 
 }
