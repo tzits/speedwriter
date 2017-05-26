@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var expressJWT = require('express-jwt')
 var jwt = require('jsonwebtoken');
-var secret = require('../secret/mySecret').secret
+var secret = require('../secret.js').secret
 
 
 

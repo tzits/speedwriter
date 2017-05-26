@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
 var expressJWT = require('express-jwt')
 var jwt = require('jsonwebtoken');
-var secret = require('./secret/mySecret').secret
+var secret = require('./secret.js').secret
 
 
 
