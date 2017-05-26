@@ -8,12 +8,16 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
+var expressJWT = require('express-jwt')
+var jwt = require('jsonwebtoken');
+var secret = require('./secret/mySecret').secret
 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
+app.use(expressJWT({ secret }).unless({ path: ['/','/about','/login']}))
 app.use(cookieParser());
 
 
@@ -81,7 +85,7 @@ app.get('/api/docs', controllers.docs.getalldocs)
 app.post('/api/users', controllers.users.createUser)
 
 // Login
-app.get('/login', controllers.users.login)
+app.post('/login', controllers.users.login)
 
 // Create Document
 app.post('/api/docs', controllers.docs.createDoc)

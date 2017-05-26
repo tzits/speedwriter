@@ -211,6 +211,7 @@ function signUp() {
 function login() {
 	newUser.email = $('#email1').val()
 	newUser.password = $('#password1').val()
+	console.log('sending:', newUser.email, newUser.password)
 	$.ajax({
 		method: 'POST',
 		url: '/login',
@@ -250,25 +251,6 @@ function word() {
 	})
 }
 
-
-
-function updateDoc() {
-	var updatedDoc = {}
-	updatedDoc.content = $('#mainText').val()
-	updatedDoc.title = $('#title').val()
-	updatedDoc.start_count = parseInt($('#total').text())
-	var array = location.href.split('/')
-	var docId = array[array.length-1]
-	parseInt($('#doc_id').text())
-	$.ajax({
-		method: 'PATCH',
-		url: '/api/docs/' + docId,
-		data: updatedDoc,
-		success: updateDocSuccess,
-		error: updateDocError
-	})
-}
-
 function newDocSuccess() {
 	console.log('woohoo')
 }
@@ -285,8 +267,9 @@ function newUserError() {
 	console.log('thats too bad')
 }
 
-function getDocSuccess() {
+function getDocSuccess(id) {
 	console.log('woohoo')
+	window.location = '/users/' + id
 }
 
 function getDocError() {
