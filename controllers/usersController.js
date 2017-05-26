@@ -30,7 +30,6 @@ function createUser(req, res) {
 			});
 		}
 	});
-	console.log(req.body)
 }
 
 function login(req,res) {
