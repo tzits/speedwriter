@@ -3,6 +3,11 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var expressJWT = require('express-jwt')
+var jwt = require('jsonwebtoken');
+var secret = require('../secret/mySecret').secret
+
+
 
 function getUser(req, res) {
 	var userId = req.params.id;
@@ -34,15 +39,16 @@ function createUser(req, res) {
 
 function login(req,res) {
 	User.findOne({email: req.body.email}, function(err, user) {
-		if (err) {console.log(err)}
-		console.log(user.validPassword(req.body.password))
-		var token = user.generateJwt();
-		res.status(200);
-		res.json({
-			"token": token
-		});
+		console.log(req.body)
+		if (err) {
+			console.log(err)
+		} else { 
+			console.log(user.validPassword(req.body.password))
+			var token = jwt.sign({ username: req.body.email }, secret)
+			res.status(200).json(token)
+			console.log('token:',token)
+		};
 	})
-
 };
 
 function updateUser(req, res) {
