@@ -211,6 +211,7 @@ function signUp() {
 function login() {
 	newUser.email = $('#email1').val()
 	newUser.password = $('#password1').val()
+	console.log('sending:', newUser.email, newUser.password)
 	$.ajax({
 		method: 'POST',
 		url: '/login',

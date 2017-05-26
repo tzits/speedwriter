@@ -81,7 +81,7 @@ app.get('/api/docs', controllers.docs.getalldocs)
 app.post('/api/users', controllers.users.createUser)
 
 // Login
-app.get('/login', controllers.users.login)
+app.post('/login', controllers.users.login)
 
 // Create Document
 app.post('/api/docs', controllers.docs.createDoc)

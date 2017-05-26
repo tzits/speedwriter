@@ -1,5 +1,6 @@
 var db = require('../models');
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
@@ -32,28 +33,46 @@ function createUser(req, res) {
 
 }
 
+passport.use(new LocalStrategy({
+    usernameField: 'email'
+  },
+  function(username, password, done) {
+    User.findOne({ email: username }, function (err, user) {
+      if (err) { return done(err); }
+      // Return if user not found in database
+      if (!user) {
+        return done(null, false, {
+          message: 'User not found'
+        });
+      }
+      // Return if password is wrong
+      if (!user.validPassword(password)) {
+        return done(null, false, {
+          message: 'Password is wrong'
+        });
+      }
+      // If credentials are correct, return the user object
+      return done(null, user);
+    });
+  }
+));
+
+
 function login(req,res) {
-	console.log('moop')
-	 passport.authenticate('local', function(err, user, info){
-    var token;
-    // If Passport throws/catches an error
-    if (err) {
-      res.status(404).json('passport error ' + err);
-      return;
-    }
-    // If a user is found
-    if(user){
-      token = user.generateJwt();
-      req.app.user = user;
-      res.status(200);
-      res.json({
-        "token" : token
-      });
-    } else {
-      // If user is not found
-      res.status(401).json('user not found, ' + info);
-    }
-  })(req, res);
+	var user = User.findOne({email: req.body.email}, function(err, user) {
+		if (err) {console.log(err)}
+		// else {
+		// 	if (user.hash == anotherUser.hash) {
+		// 		console.log(huzzah)
+		// 	} else {
+		// 		console.log('bad password',user.hash,anotherUser.hash)
+		// 	}
+			
+		// }
+		console.log(user)
+		console.log(user.validPassword(req.body.password))
+	})
+
 };
 
 function updateUser(req, res) {
