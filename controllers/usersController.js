@@ -33,11 +33,14 @@ function createUser(req, res) {
 }
 
 function login(req,res) {
-	console.log(req.body,'look at me')
 	User.findOne({email: req.body.email}, function(err, user) {
 		if (err) {console.log(err)}
-		console.log(user)
 		console.log(user.validPassword(req.body.password))
+		var token = user.generateJwt();
+		res.status(200);
+		res.json({
+			"token": token
+		});
 	})
 
 };
