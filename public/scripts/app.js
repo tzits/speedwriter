@@ -22,7 +22,7 @@ function config(   $routeProvider,  $locationProvider   ) {
 }
 $(document).ready(function() {
 	console.log("type away");
-
+	$('select').material_select();
 	var h1 = document.getElementsByTagName('h1')[0]
     var start = document.getElementById('start'),
     stop = document.getElementById('stop'),
