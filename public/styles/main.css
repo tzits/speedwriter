@@ -44,7 +44,7 @@ input {
 }
 
 body {
-	background-color: lightgrey!important;
+	background-color: #997855!important;
 }
 
 #timer-container {
@@ -151,4 +151,14 @@ body {
 .doc-container:hover {
 	background-color: lightblue;
 	opacity: .7;
+}
+
+#demo {
+	position: absolute;
+	left: 90%;
+	top: 16%;
+	background-color: lightblue;
+	padding: 15px;
+	border-radius: 15px;
+	color: #997855!important;
 }
