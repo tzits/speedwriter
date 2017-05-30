@@ -65,6 +65,10 @@ app.get('/users/*', function profilePage(req, res) {
   res.sendFile(__dirname + '/views/users.html');
 });
 
+app.get('/unlogged', function profilePage(req, res) {
+  res.sendFile(__dirname + '/views/unlogged.html');
+});
+
 /*
  * JSON API ENDPOINTS
  */
