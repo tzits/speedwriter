@@ -109,9 +109,11 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	updatedDoc.title = $('#title').val();
 		updatedDoc.start_count = parseInt($('#total').text());
 		var docId = $('#doc_id').text()
+		console.log(updatedDoc)
 		$http({
 			method: 'PATCH',
-			url: '/api/docs/' + docId
+			url: '/api/docs/' + docId,
+			data: updatedDoc
 		}).then(function successCallback(json) {
 			vm.doc = json.data;
 			console.log(vm.doc)

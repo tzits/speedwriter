@@ -17,7 +17,7 @@ var secret = require('./secret.js').secret
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
-app.use(expressJWT({ secret }).unless({ path: ['/','/about','/login']}))
+// app.use(expressJWT({ secret }).unless({ path: ['/','/about','/login']}))
 app.use(cookieParser());
 
 
@@ -30,7 +30,7 @@ var User = db.User
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var expressSession = require('express-session');
-app.use(expressSession({secret: 'mySecretKey'}));
+// app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
