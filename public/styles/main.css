@@ -112,6 +112,7 @@ body {
 .doc-container {
 	text-decoration: none;
 	height: 250px;
+	overflow: hidden;
 }
 
 .doc-content {
