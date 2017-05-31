@@ -17,6 +17,22 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     seconds = 0, minutes = 0, hours = 0,
     t;
 
+    $scope.keydownevt = function () {
+    	if (event.keyCode == 13){
+    		event.preventDefault()
+        	var caretPos = $('#mainText')[0].selectionStart;
+        	console.log(caretPos)
+        	var textAreaTxt = $('#mainText').val();
+        	var txtToAdd = "\n        ";
+        	var restart = caretPos + txtToAdd.length
+        	$('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+        	$('#mainText').prop('selectionStart', restart)
+        	$('#mainText').prop('selectionEnd', restart)
+    	} else {
+    		console.log('huh')
+    	}
+ 	}
+
     $scope.init = function(){
 	    $http({
 		method: 'GET',
@@ -25,7 +41,7 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 			vm.doc = json.data;
 			console.log(vm.doc)
 	        $scope.mainText = vm.doc.content
-			var theUser = vm.doc.user;		
+			var theUser = vm.doc.user;
 			$http({
 				method: 'GET',
 				url: '/api/users/' + theUser

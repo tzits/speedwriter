@@ -16,8 +16,8 @@
 	</div>
 	<button class='pull-right' id='show' onclick="show()">show timer</button>
 	<br><br>
-	<span id='font-change'>Font Size
-		<select name='font-size'>
+	<span id='font-change'>Font Size:
+		<select name='font-size' id='font-size'>
 			<option value='12'>12</option>
 			<option value='18'>18</option>
 			<option value='24'>24</option>
@@ -28,4 +28,4 @@
 	<input id='title' class='center-block' placeholder="title" value="{{docsEditCtrl.doc.title}}"><br>
 
 
-	<textarea id="mainText" cols="90%" rows="50" ng-model='mainText' ng-init='init()'>{{docsEditCtrl.doc.content}}</textarea>
+	<textarea id="mainText" cols="90%" rows="50" ng-model='mainText' ng-init='init()' ng-keydown="keydownevt()">{{docsEditCtrl.doc.content}}</textarea>
