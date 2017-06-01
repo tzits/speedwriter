@@ -28,6 +28,15 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
         	$('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
         	$('#mainText').prop('selectionStart', restart)
         	$('#mainText').prop('selectionEnd', restart)
+    	} else if (event.keyCode == 9){
+    		event.preventDefault()
+        	var caretPos = $('#mainText')[0].selectionStart;
+        	var textAreaTxt = $('#mainText').val();
+        	var txtToAdd = "        ";
+        	var restart = caretPos + txtToAdd.length
+        	$('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+        	$('#mainText').prop('selectionStart', restart)
+        	$('#mainText').prop('selectionEnd', restart)
     	} else {
     		console.log('huh')
     	}
