@@ -6,10 +6,9 @@ DocsIndexController.$inject = ['$http','$scope','$location', '$window'];
 
 function DocsIndexController ($http, $scope, $location, $window) {
   console.log("angular in action")
-	var vm = this
+  var vm = this
   var array = location.href.split('/')
   var userId = array[array.length-1]
-	// vm.newPet = {};	
   $http({
     method: 'GET',
     url: '/api/users/' + userId + '/docs'
