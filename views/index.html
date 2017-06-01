@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='SpeedWriter'>
 <head>
 	<title>SpeedWriter</title>
 	<link rel="stylesheet" type="text/css" href="../public/styles/main.css">
@@ -9,9 +9,13 @@
 	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
-    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
 	<script src="../public/scripts/app.js"></script>
+	<script src="../public/scripts/controllers/DocsIndexController.js"></script>
+	<script src="../public/scripts/controllers/DocsEditController.js"></script>
+	<script src="../public/scripts/controllers/DemoController.js"></script>
+
 
 
 </head>
@@ -26,8 +30,7 @@
 			</ul>		
 		</div>
 	</nav>
+	<div ng-view></div>
 
- <h1>Welcome To Speedwriter</h1>
- <a href='/unlogged' id='demo'>Demo</a>
 </body>
 </html>

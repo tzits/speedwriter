@@ -5,6 +5,16 @@ angular
 config.$inject = ['$routeProvider', '$locationProvider']    
 function config(   $routeProvider,  $locationProvider   ) {
   $routeProvider
+  	.when('/', {
+      templateUrl: '../views/templates/welcome.html',
+      controllerAs: 'docsIndexCtrl',
+      controller: 'DocsIndexController'
+  	})
+  	.when('/demo', {
+      templateUrl: '../views/templates/demo.html',
+      controllerAs: 'demoCtrl',
+      controller: 'DemoController'  	
+  	})
     .when('/users/:id', {
       templateUrl: '../views/templates/documents.html',
       controllerAs: 'docsIndexCtrl',

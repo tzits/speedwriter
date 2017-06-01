@@ -1,0 +1,29 @@
+	<span id='word-count'>Word Count: </span><span>{{logged}}</span>
+	<span class='pull-right' id='num-span'>
+		<form id='word-input'>
+			Words Per Hour:
+			<input id='num' type="number" name="quantity" min="1" max="2000" ng-model=pace value='1000'>
+		</form>
+	</span><br>
+	<div class='pull-right' id='timer-container'>
+		<h1 id='time'>{{Timer}}</h1>
+		<button id="start" ng-click="start()">start</button>
+		<button id="stop" ng-click="stop()">stop</button>
+		<button id="clear" ng-click="clear()">clear</button>
+		<button id='hide' onclick="hide()">hide</button>
+	</div>
+	<button class='pull-right' id='show' onclick="show()">show timer</button>
+	<br><br>
+	<span id='font-change'>Font Size:
+		<select name='font-size' id='font-size'>
+			<option value='12'>12</option>
+			<option value='18'>18</option>
+			<option value='24'>24</option>
+			<option value='30'>30</option>		
+		</select>
+	</span>
+
+	<input id='title' class='center-block' placeholder="title"><br>
+
+
+	<textarea id="mainText" cols="90%" rows="50" ng-model='mainText' ng-keydown="keydownevt()"></textarea>
