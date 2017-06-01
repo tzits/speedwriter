@@ -1,5 +1,5 @@
 <div><button id='new' class='waves-effect waves-red btn  green accent-3' ng-click='newDoc()'>Create New</button></div><br>
-<div class='col-sm-4 well doc-container' ng-repeat = "doc in docsIndexCtrl.docs">
+<div class='col-sm-4 well doc-container' ng-repeat = "doc in docsIndexCtrl.docs" >
 	<div>
 		<a ng-href = "/edit/{{doc._id}}">
 		<span id='doc-title'><b>{{doc.title}}</b></span>

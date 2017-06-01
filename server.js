@@ -53,20 +53,16 @@ passport.deserializeUser(function(id, done) {
 /*
  * HTML ENDPOINTS
  */
-app.get('/', function homepage(req, res) {
+app.get('/users/*', function homepage(req, res) {
 	res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/about', function profilePage(req, res) {
-	res.sendFile(__dirname + '/views/about.html');
+app.get('/about', function homepage(req, res) {
+	res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/users/*', function profilePage(req, res) {
-  res.sendFile(__dirname + '/views/users.html');
-});
-
-app.get('/unlogged', function profilePage(req, res) {
-  res.sendFile(__dirname + '/views/unlogged.html');
+app.get('/', function homepage(req, res) {
+	res.sendFile(__dirname + '/views/index.html');
 });
 
 /*
