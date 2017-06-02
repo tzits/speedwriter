@@ -163,3 +163,14 @@ body {
 	border-radius: 15px;
 	color: #997855!important;
 }
+
+.checkbox {
+	opacity: 1!important;
+	position:relative!important;
+	left: 5px!important;
+	display: inline-block!important;
+}
+
+.checklabel {
+	font-size: 1em
+}

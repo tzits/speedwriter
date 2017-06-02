@@ -17,30 +17,47 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     seconds = 0, minutes = 0, hours = 0,
     t;
 
+    $scope.autoindent = true
+
+    $scope.changeColor = true
+
     $scope.keydownevt = function () {
-    	if (event.keyCode == 13){
-    		event.preventDefault()
-        	var caretPos = $('#mainText')[0].selectionStart;
-        	console.log(caretPos)
-        	var textAreaTxt = $('#mainText').val();
-        	var txtToAdd = "\n        ";
-        	var restart = caretPos + txtToAdd.length
-        	$('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
-        	$('#mainText').prop('selectionStart', restart)
-        	$('#mainText').prop('selectionEnd', restart)
-    	} else if (event.keyCode == 9){
-    		event.preventDefault()
-        	var caretPos = $('#mainText')[0].selectionStart;
-        	var textAreaTxt = $('#mainText').val();
-        	var txtToAdd = "        ";
-        	var restart = caretPos + txtToAdd.length
-        	$('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
-        	$('#mainText').prop('selectionStart', restart)
-        	$('#mainText').prop('selectionEnd', restart)
-    	} else {
-    		console.log('huh')
-    	}
- 	}
+        if ($scope.autoindent == true) {
+            if (event.keyCode == 13){
+                event.preventDefault()
+                var caretPos = $('#mainText')[0].selectionStart;
+                console.log(caretPos)
+                var textAreaTxt = $('#mainText').val();
+                var txtToAdd = "\n        ";
+                var restart = caretPos + txtToAdd.length
+                $('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+                $('#mainText').prop('selectionStart', restart)
+                $('#mainText').prop('selectionEnd', restart)
+            } else if (event.keyCode == 9){
+                event.preventDefault()
+                var caretPos = $('#mainText')[0].selectionStart;
+                var textAreaTxt = $('#mainText').val();
+                var txtToAdd = "        ";
+                var restart = caretPos + txtToAdd.length
+                $('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+                $('#mainText').prop('selectionStart', restart)
+                $('#mainText').prop('selectionEnd', restart)
+            }
+        } else {
+            if (event.keyCode == 13){
+                event.preventDefault()
+                var caretPos = $('#mainText')[0].selectionStart;
+                console.log(caretPos)
+                var textAreaTxt = $('#mainText').val();
+                var txtToAdd = "\n";
+                var restart = caretPos + txtToAdd.length
+                $('#mainText').val(textAreaTxt.substring(0, caretPos) + txtToAdd + textAreaTxt.substring(caretPos) );
+                $('#mainText').prop('selectionStart', restart)
+                $('#mainText').prop('selectionEnd', restart)
+            }
+        }
+    }
+
 
     $scope.init = function(){
 	    $http({
