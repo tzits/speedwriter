@@ -19,7 +19,7 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 
     $scope.autoindent = true
 
-    $scope.changeColor = true
+    $scope.trackSpeed = true
 
     $scope.keydownevt = function () {
         if ($scope.autoindent == true) {
@@ -126,18 +126,21 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     			}
     		}
     		$scope.logged = noSpace.length - vm.doc.start_count
+            return noSpace.length
     	}
     }
     $scope.addEm = function() {
-    	$scope.total = parseInt(wordCount())
+    	$scope.total = parseInt($scope.wordCount())
     }
 
     $scope.color = function(total) {
-    	if ($scope.logged / total > $scope.pace) {
-			$('#mainText').attr('style', 'color:black;font-size:' + changeSize() + 'px')
-    	} else {
-			$('#mainText').attr('style', 'color:red;font-size:' + changeSize() + 'px')
-    	}
+        if ($scope.trackSpeed == true) {
+        	if ($scope.logged / total > $scope.pace) {
+    			$('#mainText').attr('style', 'color:black;font-size:' + $scope.changeSize() + 'px')
+        	} else {
+    			$('#mainText').attr('style', 'color:red;font-size:' + $scope.changeSize() + 'px')
+        	}
+        }
     }
 
     $scope.changeSize = function() {
