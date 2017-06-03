@@ -37,18 +37,21 @@ function createDownload(dir) {
 	console.log(dir)
 }
 
+var newUser = {}
+
 function signUp() {
-	newUser.name = $('#name').val()
-	newUser.email = $('#email').val()
-	newUser.password = $('#password').val()
-	$.ajax({
-		method: 'POST',
-		url: 'api/users',
-		data: newUser,
-		success: newUserSuccess,
-		error: newUserError
-	})
+  newUser.name = $('#name').val()
+  newUser.email = $('#email').val()
+  newUser.password = $('#password').val()
+  $.ajax({
+    method: 'POST',
+    url: 'api/users',
+    data: newUser,
+    success: newUserSuccess,
+    error: newUserError
+  })
 }
+
 
 function login() {
 	newUser.email = $('#email1').val()
@@ -91,11 +94,15 @@ function login() {
 // 	console.log('thats too bad')
 // }
 
-function newUserSuccess() {
-	console.log('woohoo')
+function newUserSuccess(data) {
+	if (data == 'fail') {
+    alert('Incorrect Username and Password Combo')
+  }
+  else {
+    window.location.href = '/users/' + data
+  }
 }
 
-function newUserError() {
-	console.log('thats too bad')
+function newUserError(data) {
 }
 

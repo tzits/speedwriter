@@ -1,5 +1,6 @@
 nav {
 	margin-bottom: 5px;
+	background-color: #867979!important;
 }
 
 input {
@@ -62,12 +63,26 @@ body {
 	margin-left: 4%;
 }
 
+#logo {
+	position: absolute;
+	height: 75%;
+	width:80%;
+	margin-left:10%;
+	background-color: darkgrey;
+}
+
 #show {
 	display:none;
 }
 
 #signup {
 	margin-top: 12px;
+}
+
+#register {
+	position: absolute;
+	left: 88.5%;
+	top: 30%;
 }
 
 #font-change {
@@ -136,6 +151,10 @@ body {
 	border: none;
 }
 
+#header {
+	text-align: center
+}
+
 #new {
 	height: 30px;
 	border-radius: 5px;
@@ -158,10 +177,6 @@ body {
 	position: absolute;
 	left: 90%;
 	top: 16%;
-	background-color: lightblue;
-	padding: 15px;
-	border-radius: 15px;
-	color: #997855!important;
 }
 
 .checkbox {
