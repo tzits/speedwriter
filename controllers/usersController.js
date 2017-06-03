@@ -40,13 +40,19 @@ function createUser(req, res) {
 function login(req,res) {
 	User.findOne({email: req.body.email}, function(err, user) {
 		console.log(req.body)
-		if (err) {
-			console.log(err)
+		if (user == null) {
+			res.json('fail')
 		} else { 
-			console.log(user.validPassword(req.body.password))
-			var token = jwt.sign({ username: req.body.email }, secret)
-			res.status(200).json(token)
-			console.log('token:',token)
+			if (user.validPassword(req.body.password)) {
+				var id = user._id
+				console.log(id)
+				res.json(id)
+			} else {
+				res.json('fail')
+			}
+			// var token = jwt.sign({ username: req.body.email }, secret)
+			// res.status(200).json(token)
+			// console.log('token:',token)
 		};
 	})
 };
