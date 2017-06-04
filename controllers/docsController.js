@@ -57,14 +57,15 @@ function deleteDoc(req,res) {
 }
 
 function word(req,res) {
-	console.log(req.body)
+	console.log('This is', req.body.title)
 	var docx = new builder.Document();
 	docx.beginHeader();
 	docx.insertText(req.body.title);
 	docx.endHeader();
 	docx.insertText(req.body.content)
 	console.log(docx)
-	docx.save('/Users/tobyzitsman/desktop/' + req.body.title + ".docx", function(err) {
+	var title = req.body.title.replace(/\s/g, '')
+	docx.save(__dirname + title + ".docx", function(err) {
 		if(err) {console.log(err)}
 		else {console.log('no error?')}
 	})

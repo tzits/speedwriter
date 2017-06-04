@@ -69,7 +69,7 @@ app.get('/', function homepage(req, res) {
  * JSON API ENDPOINTS
  */
 
-app.post('/api/word', controllers.docs.word)
+app.post('/edit/api/word', controllers.docs.word)
  // Get One Doc
 app.get('/api/docs/:id', controllers.docs.show)
 

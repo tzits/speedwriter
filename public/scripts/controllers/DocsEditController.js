@@ -6,6 +6,7 @@ DocsEditController.$inject = ['$http', '$routeParams', '$scope', '$interval'];
 	
 function DocsEditController ( $http, $routeParams, $scope, $interval) {
 	console.log($routeParams)
+    console.log($scope.docTitle)
 	var vm = this;
 	console.log($routeParams.id);
 	var docId= $routeParams.id
@@ -74,9 +75,11 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 			}).then(function successfulCallback(json) {
 				vm.user = json.data;
 				console.log(vm.user)
+                $scope.docTitle = 'controllers' + vm.doc.title.replace(/\s/g, '') + '.docx'
 			})
 		})
 	};
+
 
     $scope.Timer = '00:00:00'
 
@@ -165,5 +168,6 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
 			window.location = '/users/' + vm.doc.user
 		})
     }
+
 
 }
