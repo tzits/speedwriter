@@ -32,11 +32,6 @@ function config(   $routeProvider,  $locationProvider   ) {
   });
 }
 
-function createDownload(dir) {
-//		$('#docspan').text("<a download=" + dir + ">Download</a>")
-	console.log(dir)
-}
-
 var newUser = {}
 
 function signUp() {
@@ -68,31 +63,31 @@ function login() {
 
 
 
-// function word() {
-// 	console.log('word')
-// 	var word = {
-// 		title: "",
-// 		content: ""
-// 	}
-// 	word.title = $('#title').val()
-// 	word.content = $('#mainText').val()
-// 	console.log(word)
-// 	$.ajax({
-// 		method: 'POST',
-// 		data: word,
-// 		url: 'api/word',
-// 		success: newDocSuccess,
-// 		error: newDocError
-// 	})
-// }
+function word() {
+	console.log('word')
+	var word = {
+		title: "",
+		content: ""
+	}
+	word.title = $('#title').val()
+	word.content = $('#mainText').val()
+	console.log(word)
+	$.ajax({
+		method: 'POST',
+		data: word,
+		url: 'api/word',
+		success: newDocSuccess,
+		error: newDocError
+	})
+}
 
-// function newDocSuccess() {
-// 	console.log('woohoo')
-// }
+function newDocSuccess() {
+	console.log('woohoo')
+}
 
-// function newDocError() {
-// 	console.log('thats too bad')
-// }
+function newDocError() {
+	console.log('thats too bad')
+}
 
 function newUserSuccess(data) {
 	if (data == 'fail') {
