@@ -1,9 +1,9 @@
-<div><button id='new' class='waves-effect waves-red btn  green accent-3' ng-click='newDoc()'>Create New</button></div><br>
+<div><button id='new' class='waves-effect btn' ng-click='newDoc()'>Create New</button></div><br>
 <div class='col-sm-4 well doc-container' ng-repeat = "doc in docsIndexCtrl.docs" >
 	<div>
+		<button title='delete doc forever' ng-click='deleteDoc(doc)' class='delete'>X</button>
 		<a ng-href = "/edit/{{doc._id}}">
 		<span id='doc-title'><b>{{doc.title}}</b></span>
-		<button title='delete doc forever' ng-click='deleteDoc(doc)' class='delete'>X</button>
 	</div><br>
 	<span class='doc-content'>{{(doc.content).substring(0,500)}}...</span>
 	</a>

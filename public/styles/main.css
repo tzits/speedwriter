@@ -3,6 +3,10 @@ nav {
 	background-color: #867979!important;
 }
 
+#home-link {
+	font-size: 16px!important;
+}
+
 input {
 	background-color: white!important;
 	font-size: inherit!important;
@@ -12,8 +16,14 @@ input {
 	padding: inherit!important;
 }
 
-#signup {
+button {
+	background-color: #0e5096!important;
+	color: white!important;
+}
+
+#login {
 	margin-top: 9px;
+	background-color: #0e5096;
 }
 
 #mainText {
@@ -33,6 +43,10 @@ input {
 	text-align: center!important;
 	background-color: white;
 	margin: auto;
+}
+
+.checkbox {
+	margin-left: 5px;
 }
 
 #num {
@@ -81,8 +95,9 @@ body {
 
 #register {
 	position: absolute;
-	left: 88.5%;
+	left: 89.8%;
 	top: 30%;
+	background-color: #0e5096;
 }
 
 #font-change {
@@ -175,8 +190,9 @@ body {
 
 #demo {
 	position: absolute;
-	left: 90%;
+	left: 91%;
 	top: 16%;
+	background-color: #0e5096;
 }
 
 .checkbox {
