@@ -12,6 +12,11 @@ input {
 	padding: inherit!important;
 }
 
+button {
+	background-color: #0e5096!important;
+	color: white!important;
+}
+
 #signup {
 	margin-top: 9px;
 }
