@@ -35,6 +35,10 @@ input {
 	margin: auto;
 }
 
+.checkbox {
+	margin-left: 5px;
+}
+
 #num {
 	width: 60px;
 	border-radius: 5px;

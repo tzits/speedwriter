@@ -24,8 +24,8 @@
 			<option value='30'>30</option>		
 		</select>
 	</span>
-	<span style='margin-left: 5px;'>Auto-Indent<input class="checkbox" type="checkbox" ng-model="autoindent" ng-true-value=true ng-false-value=false></span>
-	<span style='margin-left: 5px;'>Track Speed<input class="checkbox" type="checkbox" ng-model="trackSpeed" ng-true-value=true ng-false-value=false></span>
+	<span class='checkbox' title='on hitting enter indentation automatically inserted'>Auto-Indent<input class="checkbox" type="checkbox" ng-model="autoindent" ng-true-value=true ng-false-value=false></span>
+	<span class='checkbox' title='changes color of text if typing below pace'>Track Speed<input class="checkbox" type="checkbox" ng-model="trackSpeed" ng-true-value=true ng-false-value=false></span>
 	<span id='saveDoc'><button ng-click="updateDoc()">Update Doc</button></span>
 	<span id='saveDoc'><button id='word' onclick="word()">Save as word</button></span>
 	<input id='title' class='center-block' placeholder="title" value="{{docsEditCtrl.doc.title}}"><br>
