@@ -17,8 +17,9 @@ button {
 	color: white!important;
 }
 
-#signup {
+#login {
 	margin-top: 9px;
+	background-color: #0e5096;
 }
 
 #mainText {
@@ -92,6 +93,7 @@ body {
 	position: absolute;
 	left: 89.8%;
 	top: 30%;
+	background-color: #0e5096;
 }
 
 #font-change {
@@ -186,6 +188,7 @@ body {
 	position: absolute;
 	left: 91%;
 	top: 16%;
+	background-color: #0e5096;
 }
 
 .checkbox {
