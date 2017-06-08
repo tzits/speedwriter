@@ -186,6 +186,7 @@ body {
 .doc-container:hover {
 	background-color: lightblue;
 	opacity: .7;
+	color: black;
 }
 
 #demo {
@@ -203,5 +204,5 @@ body {
 }
 
 .checklabel {
-	font-size: 1em
+	font-size: 1em;
 }
