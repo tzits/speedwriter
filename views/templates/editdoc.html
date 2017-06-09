@@ -25,11 +25,11 @@
 		</select>
 	</span>
 	<span class='checkbox' title='on hitting enter indentation automatically inserted'>Auto-Indent<input class="checkbox" type="checkbox" ng-model="autoindent" ng-true-value=true ng-false-value=false></span>
-	<span class='checkbox' title='changes color of text if typing below pace'>Track Speed<input class="checkbox" type="checkbox" ng-model="trackSpeed" ng-true-value=true ng-false-value=false></span>
+	<span class='checkbox' title='changes color of text if typing below pace'>Track Speed<input class="checkbox" type="checkbox" ng-model="trackSpeed" ng-true-value=true ng-false-value=false></span><br>
 	<span id='saveDoc'><button ng-click="updateDoc()">Update Doc</button></span>
+	<span ng-if="docsEditCtrl.doc.start_count == 0" id='deleteDoc'><button ng-click="cancel()">Delete</button></span>
+	<span ng-if="docsEditCtrl.doc.start_count > 0" id='deleteDoc'><button ng-click="back()">Cancel</button></span><br>
 	<span id='saveDoc'><button id='word' onclick="word()">Save as word</button></span>
-	<span ng-if="docsEditCtrl.doc.start_count == 0" id='cancel'><button id='cancel-button' ng-click="cancel()">Delete</button></span>
-	<span ng-if="docsEditCtrl.doc.start_count > 0" id='cancel'><button id='cancel-button' ng-click="back()">Cancel</button></span>
 	<input id='title' class='center-block' placeholder="title" value="{{docsEditCtrl.doc.title}}"><br>
 
 
