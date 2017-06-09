@@ -2,7 +2,7 @@ angular
   .module("SpeedWriter")
   .controller('DemoController', DemoController);
 
-DocsEditController.$inject = ['$http', '$routeParams', '$scope', '$interval'];
+DemoController.$inject = ['$http', '$routeParams', '$scope', '$interval'];
 	
 function DemoController ( $http, $routeParams, $scope, $interval) {
 	console.log($routeParams)

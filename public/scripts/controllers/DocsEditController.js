@@ -2,9 +2,9 @@ angular
   .module("SpeedWriter")
   .controller('DocsEditController', DocsEditController);
 
-DocsEditController.$inject = ['$http', '$routeParams', '$scope', '$interval'];
+DocsEditController.$inject = ['$http', '$routeParams', '$scope', '$interval', '$window'];
 	
-function DocsEditController ( $http, $routeParams, $scope, $interval) {
+function DocsEditController ( $http, $routeParams, $scope, $interval, $window) {
 	console.log($routeParams)
     console.log($scope.docTitle)
 	var vm = this;
@@ -116,9 +116,26 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	hours = 0
     }
 
+    $scope.cancel = function() {
+        $http({
+            method: 'DELETE',
+            url: '/api/docs/' + $('#doc_id').text()
+        }).then(function successCallback(response) {
+            console.log('gonezo')
+            $window.history.back()
+        }, function errorCallback(response) {
+          console.log(response,'this is sad')
+        })
+    }
+
+    $scope.back = function() {
+        $window.history.back()
+    }
+
     $scope.wordCount = function() {
     	if ($scope.mainText == '') {
-    		$scope.logged = 0
+    		$scope.logged = 0;
+            return 0;
     	} else {
     		var count = 0
     		var split = $scope.mainText.split(' ')
@@ -155,9 +172,9 @@ function DocsEditController ( $http, $routeParams, $scope, $interval) {
     	var updatedDoc = {};
     	updatedDoc.content = $('#mainText').val();
     	updatedDoc.title = $('#title').val();
-		updatedDoc.start_count = parseInt($('#total').text());
-		var docId = $('#doc_id').text()
-		console.log(updatedDoc)
+		updatedDoc.start_count = parseInt($scope.wordCount());
+		var docId = $('#doc_id').text();
+		console.log(updatedDoc);
 		$http({
 			method: 'PATCH',
 			url: '/api/docs/' + docId,

@@ -105,10 +105,18 @@ body {
 }
 
 #saveDoc {
-	display:block;
+	display: inline-block;
 	margin-left:4%;
 	margin-top:1%;
 }
+
+#deleteDoc {
+	display: inline-block;
+	margin-right: 5%;
+	margin top: 10px;
+	float: right;
+}
+
 
 .button {
 	background-color: white;
