@@ -22,7 +22,7 @@ button {
 }
 
 #login {
-	margin-top: 9px;
+	margin-top: 3px;
 	background-color: #0e5096;
 }
 
@@ -46,7 +46,7 @@ button {
 }
 
 .checkbox {
-	margin-left: 5px!important;
+	margin-left: 5px;
 }
 
 #num {
@@ -194,7 +194,6 @@ body {
 .doc-container:hover {
 	background-color: lightblue;
 	opacity: .7;
-	color: black;
 }
 
 #demo {
@@ -212,5 +211,5 @@ body {
 }
 
 .checklabel {
-	font-size: 1em;
+	font-size: 1em
 }
