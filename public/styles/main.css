@@ -110,6 +110,7 @@ body {
 	display: inline-block;
 	margin-left:4%;
 	margin-top:1%;
+	padding: none;
 }
 
 #deleteDoc {
