@@ -215,3 +215,9 @@ body {
 .checklabel {
 	font-size: 1em
 }
+
+.close {
+	background-color: white!important;
+	color: black!important;
+	opacity: 1!important;
+}
