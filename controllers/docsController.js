@@ -69,6 +69,7 @@ function word(req,res) {
 		if(err) {console.log(err)}
 		else {console.log('no error?')}
 	})
+	// need to edit save location to land on client desktop/downloads
 }
 
 function getalldocs(req,res) {
