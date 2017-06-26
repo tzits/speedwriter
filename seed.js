@@ -67,7 +67,7 @@ db.Doc.remove({}, function(err, docs){
       doc.user = foundUser._id;
       doc.save(function(err, savedDoc) {
 	      if (err) {
-	        return console.log(err);
+	        return console.log("error:", err);
 	      } else {
 	      	console.log(savedDoc)
 	      }
