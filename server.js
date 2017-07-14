@@ -27,7 +27,7 @@ var db = require('./models');
 var User = db.User
 
 //Passport
-// not working at the moment, can't figure out why, might be worth // out all of it at this point
+// #TODO fix this
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var expressSession = require('express-session');
